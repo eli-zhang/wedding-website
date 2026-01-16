@@ -1,7 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import {
-  BackgroundHeaderContainer, HeaderBackgroundRect, LargeHomeImage,
+  BackgroundHeaderContainer, HeaderBackgroundRect, LargeHomeImage, HoldingHandsImage, WelcomeMessage,
   TaglineContainer, TaglineText, TaglineSubtitle, TaglineSubtitleDate, TaglineSubtitleLocation, TaglineSubtitleContainer, TaglineButtonContainer,
   TaglineDateLeft, TaglineDateCenter, TaglineDateRight,
   SectionSpacer, RotatedSideText, EmptyButton,
@@ -30,6 +30,8 @@ function HomePage() {
   const [isSaveTheDateVisible, setIsSaveTheDateVisible] = useState(false);
 
   useEffect(() => {
+    document.title = "Francesca & Eli's Wedding Website"
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -97,9 +99,19 @@ function HomePage() {
         </SaveTheDateDetails>
       </SaveTheDateContainer>
 
+      <FadeInWrapper>
+        <WelcomeMessage>
+          In 1837, the city of Chicago adopted the motto Urbs in Horto, or "City in a Garden."
+          Though Chicago is now a city of glittering skyscrapers and vibrant neighborhoods, it is still filled with beautiful green spaces, from the lakefront trail to over 600 parks.
+          We're excited to invite you to Chicago and our wedding at <b>Garfield Park Conservatory</b>, one of Chicago's public parks, where you can experience a garden in the city that we love.
+        </WelcomeMessage>
+      </FadeInWrapper>
+
       <SectionSpacer />
 
-      <FadeInWrapper>
+      <HoldingHandsImage />
+
+      {/* <FadeInWrapper>
         <ContentSection>
           <ContentTextContainer>
             <ContentTitle>Where to go</ContentTitle>
@@ -185,7 +197,7 @@ function HomePage() {
             <ContentImageThingsToDo />
           </ContentImageContainer>
         </ContentSectionReversed>
-      </FadeInWrapper>
+      </FadeInWrapper> */}
 
     </div>
 

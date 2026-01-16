@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import homePageImage from '../../images/blueberry_other.jpg';
-import holdingHandsImage from '../../images/holding_hands.jpg';
+import holdingHandsImage from '../../images/home_page_lower_image.jpg';
 import garfieldParkImage from '../../images/garfield_park.png';
 import zooImage from '../../images/lincoln_park_zoo.jpg';
 import trainImage from '../../images/train.jpg';
@@ -90,6 +90,47 @@ export const LargeHomeImage = styled.div`
     background-repeat:no-repeat;
     background-size:cover;
     background-position: center center;
+`
+
+export const HoldingHandsImage = styled.div`
+    position: relative;
+    left: 80px;
+    width: calc(100% - 160px);
+    height: 500px;
+    background-image: url(${holdingHandsImage});
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position: center center;
+    overflow: hidden;
+    margin-bottom: 100px;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        left: 0;
+        width: 100%;
+        height: 500px;
+    }
+`
+
+export const WelcomeMessage = styled.p`
+    font-family: 'Jost', sans-serif;
+    font-size: 1.3rem;
+    color: #8c8585;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.8;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+
+    b {
+        font-weight: 600;
+    }
+
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: 1rem;
+        padding: 0 20px;
+        margin-bottom: 40px;
+    }
 `
 
 export const TaglineContainer = styled.div`
