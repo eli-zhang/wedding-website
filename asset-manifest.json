@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/wedding-website/static/css/main.f2bb418b.css",
+    "main.js": "/wedding-website/static/js/main.e84dbe07.js",
+    "static/js/787.b26ea9af.chunk.js": "/wedding-website/static/js/787.b26ea9af.chunk.js",
+    "static/media/holding_hands.jpg": "/wedding-website/static/media/holding_hands.3f95add9a948f2c7a36c.jpg",
+    "static/media/engaged.jpg": "/wedding-website/static/media/engaged.c0f5a48d321b7c77fa1f.jpg",
+    "static/media/lincoln_park_zoo.jpg": "/wedding-website/static/media/lincoln_park_zoo.7639c1a4bbb291eb0cc3.jpg",
+    "static/media/crazy_matching.jpg": "/wedding-website/static/media/crazy_matching.086f54df059996b0fcc3.jpg",
+    "static/media/card_invitation.png": "/wedding-website/static/media/card_invitation.ecde7355c952f84bf3f4.png",
+    "static/media/blueberry_other.jpg": "/wedding-website/static/media/blueberry_other.61e852fd5893befb922a.jpg",
+    "static/media/garfield_park.png": "/wedding-website/static/media/garfield_park.0dd31dc3bab5a2760938.png",
+    "static/media/moved_in.jpg": "/wedding-website/static/media/moved_in.6a6ccb96ab8723bf7e33.jpg",
+    "static/media/train.jpg": "/wedding-website/static/media/train.156de7696dde1edf0782.jpg",
+    "static/media/kiddos.jpg": "/wedding-website/static/media/kiddos.b30ac7096283eca54d31.jpg",
+    "static/media/paper_texture.jpg": "/wedding-website/static/media/paper_texture.61b26684d48bec5528d9.jpg",
+    "static/media/prom.jpg": "/wedding-website/static/media/prom.e2bdd14ac7d0c409002c.jpg",
+    "static/media/long_ago.jpg": "/wedding-website/static/media/long_ago.55981eab76ab705ac4b0.jpg",
+    "static/media/visiting_each_other.jpg": "/wedding-website/static/media/visiting_each_other.263acde781c1753f6d85.jpg",
+    "index.html": "/wedding-website/index.html",
+    "main.f2bb418b.css.map": "/wedding-website/static/css/main.f2bb418b.css.map",
+    "main.e84dbe07.js.map": "/wedding-website/static/js/main.e84dbe07.js.map",
+    "787.b26ea9af.chunk.js.map": "/wedding-website/static/js/787.b26ea9af.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f2bb418b.css",
+    "static/js/main.e84dbe07.js"
+  ]
+}
