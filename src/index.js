@@ -10,9 +10,9 @@ import {
 import HomePage from './pages/HomePage/HomePage';
 import RSVPPage from './pages/RSVPPage/RSVPPage';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
-import SchedulePage from './pages/SchedulePage/SchedulePage';
-import TravelPage from './pages/TravelPage/TravelPage';
-import ActivitiesPage from './pages/ActivitiesPage/ActivitiesPage';
+import ThingsToDoPage from './pages/ThingsToDoPage/ThingsToDoPage';
+import HotelsPage from './pages/HotelsPage/HotelsPage';
+import TransportationPage from './pages/TransportationPage/TransportationPage';
 import FAQPage from './pages/FAQPage/FAQPage';
 import InvitationPage from './pages/InvitationPage/InvitationPage';
 import ScrollToTop from './utils/ScrollToTop/ScrollToTop';
@@ -33,14 +33,14 @@ root.render(
       <Route path="/about-us" >
         <Route index={true} element={<AboutUsPage />} />
       </Route>
-      <Route path="/schedule" >
-        <Route index={true} element={<SchedulePage />} />
+      <Route path="/transportation" >
+        <Route index={true} element={<TransportationPage />} />
       </Route>
-      <Route path="/travel" >
-        <Route index={true} element={<TravelPage />} />
+      <Route path="/things-to-do" >
+        <Route index={true} element={<ThingsToDoPage />} />
       </Route>
-      <Route path="/activities" >
-        <Route index={true} element={<ActivitiesPage />} />
+      <Route path="/hotels" >
+        <Route index={true} element={<HotelsPage />} />
       </Route>
       <Route path="/faq" >
         <Route index={true} element={<FAQPage />} />

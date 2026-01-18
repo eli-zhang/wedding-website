@@ -11,4 +11,3 @@ export const CenteredPlaceholder = styled.div`
     color: ${textColorDark};
     text-align: center;
 `
-

@@ -1,22 +1,22 @@
 import NavBar from '../../components/NavBar/NavBar';
-import { 
-  ContentSection, ContentTextContainer, ContentTitle, ContentBody, 
-  ContentSubsection, ContentSubsectionTitle, ContentImageContainer, 
-  ContentImageBackground, ContentImageTravel 
+import {
+  ContentSection, ContentTextContainer, ContentTitle, ContentBody,
+  ContentSubsection, ContentSubsectionTitle, ContentImageContainer,
+  ContentImageBackground, ContentImageTravel
 } from './styled';
 
-function TravelPage() {
+function TransportationPage() {
   return (
     <>
-      <NavBar tab={"Travel"} />
+      <NavBar tab={"Transportation"} />
       <ContentSection>
         <ContentTextContainer>
           <ContentTitle>Travel</ContentTitle>
-          
+
           <ContentSubsection>
             <ContentSubsectionTitle>How to reach Chicago</ContentSubsectionTitle>
             <ContentBody>
-              Chicago is easily accessible by plane, train, or car. The city is served by two major airports: 
+              Chicago is easily accessible by plane, train, or car. The city is served by two major airports:
               <b> O'Hare International Airport (ORD)</b> and <b>Midway International Airport (MDW)</b>.
             </ContentBody>
           </ContentSubsection>
@@ -24,8 +24,8 @@ function TravelPage() {
           <ContentSubsection>
             <ContentSubsectionTitle>How to get downtown</ContentSubsectionTitle>
             <ContentBody>
-              Both airports offer convenient transportation options to downtown Chicago, including the CTA Blue Line from O'Hare 
-              and the Orange Line from Midway. If you're driving, Chicago is well-connected via major highways, and there are 
+              Both airports offer convenient transportation options to downtown Chicago, including the CTA Blue Line from O'Hare
+              and the Orange Line from Midway. If you're driving, Chicago is well-connected via major highways, and there are
               numerous parking options available throughout the city.
             </ContentBody>
           </ContentSubsection>
@@ -74,5 +74,5 @@ function TravelPage() {
   );
 }
 
-export default TravelPage;
+export default TransportationPage;
 
