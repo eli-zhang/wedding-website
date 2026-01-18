@@ -1,10 +1,10 @@
 
 import { useState, useEffect, useRef } from 'react';
 import {
-  BackgroundHeaderContainer, HeaderBackgroundRect, LargeHomeImage, HoldingHandsImage, WelcomeMessage,
+  BackgroundHeaderContainer, HeaderBackgroundRect, LargeHomeImage, BlueberryImage, WelcomeMessage,
   TaglineContainer, TaglineText, TaglineSubtitle, TaglineSubtitleDate, TaglineSubtitleLocation, TaglineSubtitleContainer, TaglineButtonContainer,
   TaglineDateLeft, TaglineDateCenter, TaglineDateRight,
-  SectionSpacer, RotatedSideText, EmptyButton,
+  SectionSpacer, RotatedSideText, EmptyButton, RingDoodleIcon,
   ContentSection, ContentSectionReversed, ContentTextContainer, ContentTitle, ContentBody, ContentImageContainer, ContentImage, ContentImageBackground, ContentImageBackgroundLeft,
   ContentImageTravel, ContentImageSchedule, ContentImageThingsToDo, Ampersand,
   SaveTheDateContainer, SaveTheDateHeader, SaveTheDateTitle, SaveTheDateSubtext, SaveTheDateDetails, DetailColumn, DetailLabel, DetailValue, DetailSubValue,
@@ -13,6 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import NavBar from '../../components/NavBar/NavBar'
 import FadeInWrapper from '../../components/FadeInWrapper/FadeInWrapper';
+import ringDoodle from '../../images/ring_doodle.png';
 
 function HomePage() {
   const [scrollY, setScrollY] = useState(0);
@@ -64,11 +65,12 @@ function HomePage() {
         <LargeHomeImage style={{ transform: `translateY(${parallaxOffset}px)` }} />
         <TaglineContainer>
           <TaglineSubtitleContainer>
+            <RingDoodleIcon src={ringDoodle} />
             <TaglineSubtitle>THE WEDDING DAY OF</TaglineSubtitle>
             <TaglineText>
-              <i><div>FRANCESCA</div></i>
+              <div>FRANCESCA</div>
               <Ampersand>&</Ampersand>
-              <i><div>ELI</div></i>
+              <div>ELI</div>
             </TaglineText>
           </TaglineSubtitleContainer>
           <TaglineButtonContainer>
@@ -109,7 +111,7 @@ function HomePage() {
 
       <SectionSpacer />
 
-      <HoldingHandsImage />
+      <BlueberryImage />
 
       {/* <FadeInWrapper>
         <ContentSection>

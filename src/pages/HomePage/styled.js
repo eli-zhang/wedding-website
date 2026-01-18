@@ -1,11 +1,13 @@
 import styled, { keyframes } from 'styled-components';
-import homePageImage from '../../images/blueberry_other.jpg';
+import blueberryImage from '../../images/blueberry_other.jpg';
 import holdingHandsImage from '../../images/home_page_lower_image.jpg';
 import garfieldParkImage from '../../images/garfield_park.png';
 import zooImage from '../../images/lincoln_park_zoo.jpg';
 import trainImage from '../../images/train.jpg';
 import paperTexture from '../../images/paper_texture.jpg';
 import { accentColor, accentColorBlue, accentColorTitle, accentColorLighter, mobileBreakpoint, textColorDark } from '../../constants';
+
+import ringDoodle from '../../images/ring_doodle.png';
 
 const fadeIn = keyframes`
     from {
@@ -19,17 +21,17 @@ const fadeIn = keyframes`
 export const Ampersand = styled.span`
     font-family: 'Ibarra Real Nova', serif;
     font-style: italic;
-    font-size: 10rem;
+    font-size: 6rem;
     color: ${accentColor};
     line-height: 1;
-    margin: -70px 0;
+    margin: -30px 0;
     position: relative;
     z-index: -1;
 `
 
 export const EmptyButton = styled.button`
-    background-color: rgba(0, 0, 0, 0);
-    color: ${accentColor};
+    background-color: ${accentColor};
+    color: white;
 
     border: 1px solid ${accentColor};
     padding: 15px 150px;
@@ -60,14 +62,18 @@ export const ExploreRoomsButtonContainer = styled.div`
 `
 
 export const BackgroundHeaderContainer = styled.div`
-    /* // margin-top: 110px; */
-    position: relative;
-    height: 800px;
+    display: flex;
+    flex-direction: row;
+    height: 750px;
+    padding: 60px 180px;
+    box-sizing: border-box;
     overflow: hidden;
 
     @media (max-width: ${mobileBreakpoint}) {
-        height: 100vh;
-        min-height: 600px;
+        flex-direction: column;
+        height: auto;
+        padding: 40px 20px;
+        margin-top: 20px;
     }
 `
 
@@ -81,23 +87,27 @@ export const HeaderBackgroundRect = styled.div`
 `;
 
 export const LargeHomeImage = styled.div`
-    position: absolute;
-    top: 0;
-    left: 80px;
-    width: calc(100% - 160px);
-    height: 800px;
-    background-image: url(${homePageImage});
+    flex: 1;
+    height: 100%; 
+    background-image: url(${holdingHandsImage});
     background-repeat:no-repeat;
     background-size:cover;
     background-position: center center;
+    will-change: transform;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        height: 400px;
+        width: 100%;
+        margin: 0;
+    }
 `
 
-export const HoldingHandsImage = styled.div`
+export const BlueberryImage = styled.div`
     position: relative;
-    left: 80px;
-    width: calc(100% - 160px);
+    left: 180px;
+    width: calc(100% - 360px);
     height: 500px;
-    background-image: url(${holdingHandsImage});
+    background-image: url(${blueberryImage});
     background-repeat:no-repeat;
     background-size:cover;
     background-position: center center;
@@ -120,7 +130,7 @@ export const WelcomeMessage = styled.p`
     line-height: 1.8;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 180px;
 
     b {
         font-weight: 600;
@@ -134,45 +144,31 @@ export const WelcomeMessage = styled.p`
 `
 
 export const TaglineContainer = styled.div`
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.95);
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: calc(50px + 325px);
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 90px 115px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-    opacity: 1;
+    justify-content: center;
+    padding: 60px;
+    text-align: center;
 
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url(${paperTexture});
-        background-repeat: repeat;
-        opacity: 0.3;
-        pointer-events: none;
-        z-index: -1;
+    @media (max-width: ${mobileBreakpoint}) {
+        padding: 40px 20px;
     }
-
 `
 
 export const TaglineText = styled.div`
     color: ${accentColorTitle};
-    font-size: 8rem;
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 500;
+    font-size: 5rem;
+    font-family: 'Gabarito', sans-serif;
+    font-weight: 800;
     text-align: center;
-    line-height: 1.0;
+    line-height: 1.1;
     animation: ${fadeIn} 0.7s ease-in;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-transform: uppercase;
 
     & > div {
         position: relative;
@@ -183,15 +179,25 @@ export const TaglineText = styled.div`
 export const TaglineSubtitleContainer = styled.div`
     margin-top: 15px;
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+export const RingDoodleIcon = styled.img`
+    width: 100px;
+    height: auto;
+    animation: ${fadeIn} 0.7s ease-in;
 `
 
 export const TaglineSubtitle = styled.div`
     color: ${accentColor};
-    font-size: 2.7rem;
-    font-family: "Jost", sans-serif;
+    font-size: 1.6rem;
+    font-family: 'Gabarito', sans-serif;
     font-weight: 400;
     text-align: center;
     margin: 10px;
+    letter-spacing: 0.4rem;
     animation: ${fadeIn} 0.7s ease-in;
     
     b {
@@ -316,7 +322,7 @@ export const ContentSection = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 80px 80px;
+    padding: 80px 180px;
     gap: 60px;
     max-width: 1400px;
     margin: 0 auto;
@@ -333,7 +339,7 @@ export const ContentSectionReversed = styled.div`
     flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
-    padding: 80px 80px;
+    padding: 80px 180px;
     gap: 60px;
     max-width: 1400px;
     margin: 0 auto;
@@ -537,7 +543,7 @@ const fadeInLeft = keyframes`
 `
 
 export const SaveTheDateContainer = styled.div`
-    padding: 100px 150px;
+    padding: 100px 180px;
     display: flex;
     flex-direction: column;
     gap: 80px;

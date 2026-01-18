@@ -1,36 +1,46 @@
 import styled from 'styled-components'
-import { accentColor, accentColorLighter, accentColorOffWhite, mobileBreakpoint, textColorDark } from '../../constants'
+import { backgroundPageColor, accentColor, accentColorLighter, accentColorOffWhite, mobileBreakpoint, textColorDark } from '../../constants'
 
 export const Title = styled.h1`
-    color: ${textColorDark};
-    font-size: 30px;
+    color: ${accentColor};
+    font-size: 2rem;
     font-family: 'Jost', sans-serif;
-    font-weight: 400;
-    margin-left: 30px;
+    font-weight: 500;
+    margin: 0 80px;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    white-space: nowrap;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: 1.5rem;
+    }
 `
 
 export const NavBarContainer = styled.div`
     position: sticky;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 100;
     box-sizing: border-box;
-    background-color: ${accentColorOffWhite};
-    padding: 40px 20px;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+    background-color: ${backgroundPageColor};
+    padding: 30px 40px;
     flex-basis: auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
     @media (max-width: ${mobileBreakpoint}) {
         padding: 20px;
-        justify-content: flex-end;
+        justify-content: space-between;
     }
 `
 
 export const NavSpacer = styled.div`
-    flex: 1;
+    display: none;
 `
 
 export const NavItemsContainer = styled.ul`
@@ -38,9 +48,9 @@ export const NavItemsContainer = styled.ul`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    list-style: none;
+    padding: 0;
+    margin: 0;
 
     @media (max-width: ${mobileBreakpoint}) {
         display: none;
@@ -49,22 +59,21 @@ export const NavItemsContainer = styled.ul`
 
 export const NavItem = styled.li`
     display: block;
-    margin-left: 35px;
-    margin-right: 35px;
-    margin-top: 15px;
+    margin: 0 20px;
 
-    color: #444444;
+    color: ${accentColor};
     font-size: 1rem;
-    font-family: 'Jost', sans-serif;
+    font-family: 'Gabarito', sans-serif;
     font-weight: 300;
     transition: all 0.1s ease-in-out;
     position: relative;
     padding-left: 0;
     padding-right: 0;
     white-space: nowrap;
+    text-transform: uppercase;
 
     &:hover {
-        color: black;
+        color: ${accentColor};
         cursor: pointer;
         &:before {
             transform: scaleX(1);
