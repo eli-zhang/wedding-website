@@ -1,6 +1,6 @@
-export const accentColor = "#668493";
+export const accentColor = "#6185bb";
 export const accentColorLighter = "#d1bfbb";
-export const accentColorTitle = "#e6c089ff";
+export const accentColorTitle = "#d79484";
 export const accentColorBlue = "#627d96";
 export const accentColorOffWhite = "#fffdfa";
 export const mobileBreakpoint = "768px";
