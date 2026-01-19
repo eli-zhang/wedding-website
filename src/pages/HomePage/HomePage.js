@@ -1,7 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import {
-  BackgroundHeaderContainer, HeaderBackgroundRect, LargeHomeImage, BlueberryImage, WelcomeMessageSection, WelcomeMessage,
+  BackgroundHeaderContainer, HeaderBackgroundRect, LargeHomeImage, BlueberryImageContainer, BlueberryImage, WelcomeMessageSection, WelcomeMessage,
   TaglineContainer, TaglineText, TaglineSubtitle, TaglineSubtitleDate, TaglineSubtitleLocation, TaglineSubtitleContainer, TaglineButtonContainer,
   TaglineDateLeft, TaglineDateCenter, TaglineDateRight,
   SectionSpacer, RotatedSideTextLeft, RotatedSideTextRight, EmptyButton, RingDoodleIcon,
@@ -17,18 +17,25 @@ import ringDoodle from '../../images/ring_doodle.png';
 
 function HomePage() {
   const [scrollY, setScrollY] = useState(0);
+  const saveTheDateRef = useRef(null);
+  const blueberryRef = useRef(null);
+  const [isSaveTheDateVisible, setIsSaveTheDateVisible] = useState(false);
+  const [blueberryOffset, setBlueberryOffset] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      // setScrollY(window.scrollY);
+      setScrollY(window.scrollY);
+      if (blueberryRef.current) {
+        const rect = blueberryRef.current.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const progress = 1 - (rect.top + rect.height) / (viewportHeight + rect.height);
+        setBlueberryOffset((progress - 0.5) * 300);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const saveTheDateRef = useRef(null);
-  const [isSaveTheDateVisible, setIsSaveTheDateVisible] = useState(false);
 
   useEffect(() => {
     document.title = "Francesca & Eli's Wedding Website"
@@ -54,16 +61,16 @@ function HomePage() {
     };
   }, []);
 
-  const parallaxOffset = scrollY * 0.7;
+  const sideTextOpacity = Math.max(0, 1 - scrollY / 250);
 
   return (
     <div className="App">
       <NavBar tab={"Home"} />
-      <RotatedSideTextLeft>MAY 17, 2026</RotatedSideTextLeft>
-      <RotatedSideTextRight>CHICAGO, IL</RotatedSideTextRight>
+      <RotatedSideTextLeft $opacity={sideTextOpacity}>MAY 17, 2026</RotatedSideTextLeft>
+      <RotatedSideTextRight $opacity={sideTextOpacity}>CHICAGO, IL</RotatedSideTextRight>
 
       <BackgroundHeaderContainer>
-        <LargeHomeImage style={{ transform: `translateY(${parallaxOffset}px)` }} />
+        <LargeHomeImage />
         <TaglineContainer>
           <TaglineSubtitleContainer>
             <RingDoodleIcon src={ringDoodle} />
@@ -94,7 +101,9 @@ function HomePage() {
 
       <SectionSpacer />
 
-      <BlueberryImage />
+      <BlueberryImageContainer ref={blueberryRef}>
+        <BlueberryImage style={{ transform: `translateY(${blueberryOffset}px)` }} />
+      </BlueberryImageContainer>
       <SectionSpacer />
 
       <SaveTheDateContainer ref={saveTheDateRef} $isVisible={isSaveTheDateVisible}>

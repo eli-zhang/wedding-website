@@ -102,22 +102,30 @@ export const LargeHomeImage = styled.div`
     }
 `
 
-export const BlueberryImage = styled.div`
+export const BlueberryImageContainer = styled.div`
     position: relative;
     left: 180px;
     width: calc(100% - 360px);
     height: 500px;
-    background-image: url(${blueberryImage});
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-position: center center;
     overflow: hidden;
 
     @media (max-width: ${mobileBreakpoint}) {
         left: 0;
         width: 100%;
-        height: 500px;
     }
+`
+
+export const BlueberryImage = styled.div`
+    position: absolute;
+    top: -250px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 500px);
+    background-image: url(${blueberryImage});
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position: center center;
+    will-change: transform;
 `
 
 export const WelcomeMessageSection = styled.div`
@@ -538,6 +546,8 @@ export const RotatedSideTextLeft = styled.div`
     z-index: 10;
     letter-spacing: 0.3rem;
     animation: ${fadeIn} 0.7s ease-in;
+    opacity: ${props => props.$opacity ?? 1};
+    transition: opacity 0.5s ease;
 
     @media (max-width: ${mobileBreakpoint}) {
         display: none;
@@ -558,6 +568,8 @@ export const RotatedSideTextRight = styled.div`
     z-index: 10;
     letter-spacing: 0.3rem;
     animation: ${fadeIn} 0.7s ease-in;
+    opacity: ${props => props.$opacity ?? 1};
+    transition: opacity 0.5s ease;
 
     @media (max-width: ${mobileBreakpoint}) {
         display: none;
