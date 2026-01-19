@@ -18,6 +18,15 @@ const fadeIn = keyframes`
     }
 `;
 
+const swipeRight = keyframes`
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+`;
+
 export const Ampersand = styled.span`
     font-family: 'Ibarra Real Nova', serif;
     font-style: italic;
@@ -46,6 +55,7 @@ export const EmptyButton = styled.button`
     &:hover {
         cursor: pointer;
         background-color: white;
+        color: ${accentColor};
     }
 
     @media (max-width: ${mobileBreakpoint}) {
@@ -93,7 +103,10 @@ export const LargeHomeImage = styled.div`
     background-repeat:no-repeat;
     background-size:cover;
     background-position: center center;
-    will-change: transform;
+    will-change: transform, clip-path;
+    
+    clip-path: inset(0 100% 0 0);
+    animation: ${props => props.$isLoaded ? swipeRight : 'none'} 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 
     @media (max-width: ${mobileBreakpoint}) {
         height: 400px;
@@ -129,10 +142,14 @@ export const BlueberryImage = styled.div`
 `
 
 export const WelcomeMessageSection = styled.div`
-    background-color: ${accentColorTitle};
+    background-color: ${accentColorGreen};
     width: 100%;
     padding: 100px 0;
     box-sizing: border-box;
+
+    opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+    transform: ${({ $isVisible }) => ($isVisible ? 'translateX(0)' : 'translateX(-50px)')};
+    transition: opacity 1s ease-out, transform 1s ease-out;
 
     @media (max-width: ${mobileBreakpoint}) {
         padding: 60px 0;
@@ -588,7 +605,7 @@ const fadeInLeft = keyframes`
 `
 
 export const SaveTheDateContainer = styled.div`
-    background-color: ${accentColorGreen};
+    background-color: ${accentColorTitle};
     padding: 100px 180px;
     display: flex;
     flex-direction: column;
@@ -657,7 +674,7 @@ export const DetailColumn = styled.div`
     flex-direction: column;
     gap: 15px;
     flex: 1;
-    border-top: 1px solid #d3d3d3;
+    border-top: 2px solid #e9e9e9;
     padding-top: 20px;
 `
 
@@ -672,7 +689,8 @@ export const DetailValue = styled.span`
     font-size: 3rem;
     color: ${backgroundPageColor};
     font-weight: 400;
-    margin-top: -10px;
+    line-height: 100%;
+
 `
 
 export const DetailSubValue = styled.span`

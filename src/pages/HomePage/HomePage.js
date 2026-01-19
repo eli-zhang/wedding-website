@@ -17,10 +17,23 @@ import ringDoodle from '../../images/ring_doodle.png';
 
 function HomePage() {
   const [scrollY, setScrollY] = useState(0);
+  const [isMainImageLoaded, setIsMainImageLoaded] = useState(false);
+  const [blueberryOffset, setBlueberryOffset] = useState(0);
+  const [isSaveTheDateVisible, setIsSaveTheDateVisible] = useState(false);
+  const [isWelcomeVisible, setIsWelcomeVisible] = useState(false);
+
   const saveTheDateRef = useRef(null);
   const blueberryRef = useRef(null);
-  const [isSaveTheDateVisible, setIsSaveTheDateVisible] = useState(false);
-  const [blueberryOffset, setBlueberryOffset] = useState(0);
+  const welcomeRef = useRef(null);
+
+  useEffect(() => {
+    // Preload the main home image to trigger swipe animation
+    const img = new Image();
+    // Path relative to src/pages/HomePage/HomePage.js
+    img.src = require('../../images/home_page_lower_image.jpg');
+    img.onload = () => setIsMainImageLoaded(true);
+    if (img.complete) setIsMainImageLoaded(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,11 +54,16 @@ function HomePage() {
     document.title = "Francesca & Eli's Wedding Website"
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsSaveTheDateVisible(true);
-          observer.disconnect();
-        }
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (entry.target === saveTheDateRef.current) {
+              setIsSaveTheDateVisible(true);
+            } else if (entry.target === welcomeRef.current) {
+              setIsWelcomeVisible(true);
+            }
+          }
+        });
       },
       {
         threshold: 0.1
@@ -54,6 +72,9 @@ function HomePage() {
 
     if (saveTheDateRef.current) {
       observer.observe(saveTheDateRef.current);
+    }
+    if (welcomeRef.current) {
+      observer.observe(welcomeRef.current);
     }
 
     return () => {
@@ -70,7 +91,7 @@ function HomePage() {
       <RotatedSideTextRight $opacity={sideTextOpacity}>CHICAGO, IL</RotatedSideTextRight>
 
       <BackgroundHeaderContainer>
-        <LargeHomeImage />
+        <LargeHomeImage $isLoaded={isMainImageLoaded} />
         <TaglineContainer>
           <TaglineSubtitleContainer>
             <RingDoodleIcon src={ringDoodle} />
@@ -89,23 +110,6 @@ function HomePage() {
 
       <SectionSpacer />
 
-      <FadeInWrapper>
-        <WelcomeMessageSection>
-          <WelcomeMessage>
-            In 1837, the city of Chicago adopted the motto Urbs in Horto, or "City in a Garden."
-            Though Chicago is now a city of glittering skyscrapers and vibrant neighborhoods, it is still filled with beautiful green spaces, from the lakefront trail to over 600 parks.
-            We're excited to invite you to Chicago and our wedding at <b>Garfield Park Conservatory</b>, one of Chicago's public parks, where you can experience a garden in the city that we love.
-          </WelcomeMessage>
-        </WelcomeMessageSection>
-      </FadeInWrapper>
-
-      <SectionSpacer />
-
-      <BlueberryImageContainer ref={blueberryRef}>
-        <BlueberryImage style={{ transform: `translateY(${blueberryOffset}px)` }} />
-      </BlueberryImageContainer>
-      <SectionSpacer />
-
       <SaveTheDateContainer ref={saveTheDateRef} $isVisible={isSaveTheDateVisible}>
         <SaveTheDateHeader>
           <SaveTheDateTitle>See you soon!</SaveTheDateTitle>
@@ -114,11 +118,11 @@ function HomePage() {
         <SaveTheDateDetails>
           <DetailColumn>
             <DetailLabel>Date</DetailLabel>
-            <DetailValue>05.17.2026</DetailValue>
+            <DetailValue>May 17, 2026</DetailValue>
           </DetailColumn>
           <DetailColumn>
             <DetailLabel>Time</DetailLabel>
-            <DetailValue>17:30</DetailValue>
+            <DetailValue>5:30 PM</DetailValue>
           </DetailColumn>
           <DetailColumn>
             <DetailLabel>Location</DetailLabel>
@@ -127,6 +131,21 @@ function HomePage() {
           </DetailColumn>
         </SaveTheDateDetails>
       </SaveTheDateContainer>
+
+      <SectionSpacer />
+
+      <BlueberryImageContainer ref={blueberryRef}>
+        <BlueberryImage style={{ transform: `translateY(${blueberryOffset}px)` }} />
+      </BlueberryImageContainer>
+      <SectionSpacer />
+
+      <WelcomeMessageSection ref={welcomeRef} $isVisible={isWelcomeVisible}>
+        <WelcomeMessage>
+          In 1837, the city of Chicago adopted the motto Urbs in Horto, or "City in a Garden."
+          Though Chicago is now a city of glittering skyscrapers and vibrant neighborhoods, it is still filled with beautiful green spaces, from the lakefront trail to over 600 parks.
+          We're excited to invite you to Chicago and our wedding at <b>Garfield Park Conservatory</b>, one of Chicago's public parks, where you can experience a garden in the city that we love.
+        </WelcomeMessage>
+      </WelcomeMessageSection>
 
 
       {/* <FadeInWrapper>
