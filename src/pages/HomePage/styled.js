@@ -5,7 +5,7 @@ import garfieldParkImage from '../../images/garfield_park.png';
 import zooImage from '../../images/lincoln_park_zoo.jpg';
 import trainImage from '../../images/train.jpg';
 import paperTexture from '../../images/paper_texture.jpg';
-import { accentColor, accentColorBlue, accentColorTitle, accentColorLighter, mobileBreakpoint, textColorDark } from '../../constants';
+import { accentColor, accentColorBlue, accentColorGreen, accentColorTitle, accentColorLighter, backgroundPageColor, mobileBreakpoint, textColorDark } from '../../constants';
 
 import ringDoodle from '../../images/ring_doodle.png';
 
@@ -34,8 +34,8 @@ export const EmptyButton = styled.button`
     color: white;
 
     border: 1px solid ${accentColor};
-    padding: 15px 150px;
-    font-size: 1.5rem;
+    padding: 15px 100px;
+    font-size: 1.2rem;
     font-family: 'Jost', sans-serif;
     font-weight: 400;
     text-transform: uppercase;
@@ -112,7 +112,6 @@ export const BlueberryImage = styled.div`
     background-size:cover;
     background-position: center center;
     overflow: hidden;
-    margin-bottom: 100px;
 
     @media (max-width: ${mobileBreakpoint}) {
         left: 0;
@@ -121,10 +120,21 @@ export const BlueberryImage = styled.div`
     }
 `
 
+export const WelcomeMessageSection = styled.div`
+    background-color: ${accentColorTitle};
+    width: 100%;
+    padding: 100px 0;
+    box-sizing: border-box;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        padding: 60px 0;
+    }
+`
+
 export const WelcomeMessage = styled.p`
     font-family: 'Jost', sans-serif;
     font-size: 1.3rem;
-    color: #8c8585;
+    color: white;
     font-style: italic;
     text-align: center;
     line-height: 1.8;
@@ -139,7 +149,6 @@ export const WelcomeMessage = styled.p`
     @media (max-width: ${mobileBreakpoint}) {
         font-size: 1rem;
         padding: 0 20px;
-        margin-bottom: 40px;
     }
 `
 
@@ -150,6 +159,7 @@ export const TaglineContainer = styled.div`
     align-items: center;
     justify-content: center;
     padding: 60px;
+    padding-bottom: 110px;
     text-align: center;
 
     @media (max-width: ${mobileBreakpoint}) {
@@ -247,7 +257,7 @@ export const TaglineSubtitleDate = styled.div`
 export const TaglineDateLeft = styled.span`
     color: ${accentColor};
     font-size: 0.8rem;
-    font-family: 'Ibarra Real Nova', serif;
+    font-family: 'Gabarito', sans-serif;
     font-weight: 400;
     text-transform: lowercase;
     line-height: 3rem;
@@ -266,7 +276,7 @@ export const TaglineDateCenter = styled.span`
 export const TaglineDateRight = styled.span`
     color: ${accentColor};
     font-size: 0.8rem;
-    font-family: 'Ibarra Real Nova', serif;
+    font-family: 'Gabarito', sans-serif;
     font-weight: 400;
     text-transform: lowercase;
     line-height: 3rem;
@@ -361,7 +371,7 @@ export const ContentTextContainer = styled.div`
 export const ContentTitle = styled.h2`
     color: ${accentColor};
     font-size: 3rem;
-    font-family: 'Ibarra Real Nova', serif;
+    font-family: 'Gabarito', sans-serif;
     font-weight: 500;
     line-height: 1.2;
     margin: 0;
@@ -390,7 +400,7 @@ export const ContentSubsection = styled.div`
 export const ContentSubsectionTitle = styled.h3`
     color: ${accentColorBlue};
     font-size: 1.5rem;
-    font-family: 'Ibarra Real Nova', serif;
+    font-family: 'Gabarito', sans-serif;
     font-weight: 500;
     line-height: 1.3;
     margin: 0;
@@ -514,17 +524,40 @@ export const ContentImageThingsToDo = styled.div`
     }
 `
 
-export const RotatedSideText = styled.div`
+export const RotatedSideTextLeft = styled.div`
     position: fixed;
-    left: -8px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%) rotate(-90deg);
     transform-origin: center;
     white-space: nowrap;
-    font-family: 'Jost', sans-serif;
-    font-size: 1.35rem;
-    color: ${accentColor};
+    font-family: 'Gabarito', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: ${textColorDark};
     z-index: 10;
+    letter-spacing: 0.3rem;
+    animation: ${fadeIn} 0.7s ease-in;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        display: none;
+    }
+`
+
+export const RotatedSideTextRight = styled.div`
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: center;
+    white-space: nowrap;
+    font-family: 'Gabarito', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: ${textColorDark};
+    z-index: 10;
+    letter-spacing: 0.3rem;
+    animation: ${fadeIn} 0.7s ease-in;
 
     @media (max-width: ${mobileBreakpoint}) {
         display: none;
@@ -543,10 +576,12 @@ const fadeInLeft = keyframes`
 `
 
 export const SaveTheDateContainer = styled.div`
+    background-color: ${accentColorGreen};
     padding: 100px 180px;
     display: flex;
     flex-direction: column;
     gap: 80px;
+    box-sizing: border-box;
     
     opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
     transform: ${({ $isVisible }) => ($isVisible ? 'translateX(0)' : 'translateX(-50px)')};
@@ -579,9 +614,9 @@ export const SaveTheDateHeader = styled.div`
 `
 
 export const SaveTheDateTitle = styled.h2`
-    font-family: 'Ibarra Real Nova', serif;
+    font-family: 'Gabarito', sans-serif;
     font-size: 4rem;
-    color: #5d5656;
+    color: ${backgroundPageColor};
     font-weight: 400;
     margin: 0;
 `
@@ -589,7 +624,7 @@ export const SaveTheDateTitle = styled.h2`
 export const SaveTheDateSubtext = styled.p`
     font-family: 'Jost', sans-serif;
     font-size: 1.2rem;
-    color: #8c8585;
+    color: ${backgroundPageColor};
     margin: 0;
 `
 
@@ -617,13 +652,13 @@ export const DetailColumn = styled.div`
 export const DetailLabel = styled.span`
     font-family: 'Jost', sans-serif;
     font-size: 1rem;
-    color: #8c8585;
+    color: ${backgroundPageColor};
 `
 
 export const DetailValue = styled.span`
-    font-family: 'Ibarra Real Nova', serif;
+    font-family: 'Gabarito', sans-serif;
     font-size: 3rem;
-    color: #5d5656;
+    color: ${backgroundPageColor};
     font-weight: 400;
     margin-top: -10px;
 `
@@ -631,6 +666,6 @@ export const DetailValue = styled.span`
 export const DetailSubValue = styled.span`
     font-family: 'Jost', sans-serif;
     font-size: 1.1rem;
-    color: #8c8585;
+    color: ${backgroundPageColor};
     line-height: 1.5;
 `

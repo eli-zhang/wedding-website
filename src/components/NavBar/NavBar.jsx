@@ -15,7 +15,7 @@ const NavBar = ({ tab }) => {
             </NavItemsContainer>
 
             <Link to="/" style={{ textDecoration: 'none' }}>
-                <Title>Eli & Francesca</Title>
+                <Title>Francesca & Eli</Title>
             </Link>
 
             <NavItemsContainer>

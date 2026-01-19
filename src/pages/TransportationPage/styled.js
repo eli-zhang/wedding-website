@@ -46,7 +46,7 @@ export const ContentTextContainer = styled.div`
 export const ContentTitle = styled.h2`
     color: ${accentColor};
     font-size: 3rem;
-    font-family: 'Bodoni Moda', serif;
+    font-family: 'Gabarito', sans-serif;
     font-weight: 500;
     line-height: 1.2;
     margin: 0;
@@ -75,7 +75,7 @@ export const ContentSubsection = styled.div`
 export const ContentSubsectionTitle = styled.h3`
     color: ${accentColorBlue};
     font-size: 1.5rem;
-    font-family: 'Bodoni Moda', serif;
+    font-family: 'Gabarito', sans-serif;
     font-weight: 500;
     line-height: 1.3;
     margin: 0;

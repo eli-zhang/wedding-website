@@ -31,7 +31,7 @@ export const StepContainer = styled.div`
 `
 
 export const QuestionTitle = styled.h2`
-    font-family: 'Bodoni Moda', serif;
+    font-family: 'Gabarito', sans-serif;
     font-size: 3rem;
     color: ${accentColor};
     text-align: center;
@@ -39,7 +39,7 @@ export const QuestionTitle = styled.h2`
 `
 
 export const FormTitle = styled.h1`
-    font-family: 'Bodoni Moda', serif;
+    font-family: 'Gabarito', sans-serif;
     font-size: 2.5rem;
     color: ${accentColor};
     text-align: left;

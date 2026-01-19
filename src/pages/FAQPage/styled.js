@@ -21,7 +21,7 @@ export const FAQContainer = styled.div`
 export const FAQTitle = styled.h1`
     color: ${accentColor};
     font-size: 3.5rem;
-    font-family: 'Bodoni Moda', serif;
+    font-family: 'Gabarito', sans-serif;
     font-weight: 500;
     line-height: 1.2;
     margin: 0 0 60px 0;
@@ -46,7 +46,7 @@ export const FAQItem = styled.li`
 export const FAQQuestion = styled.h2`
     color: ${accentColorBlue};
     font-size: 1.8rem;
-    font-family: 'Bodoni Moda', serif;
+    font-family: 'Gabarito', sans-serif;
     font-weight: 500;
     line-height: 1.3;
     margin: 0;

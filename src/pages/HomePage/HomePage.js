@@ -1,10 +1,10 @@
 
 import { useState, useEffect, useRef } from 'react';
 import {
-  BackgroundHeaderContainer, HeaderBackgroundRect, LargeHomeImage, BlueberryImage, WelcomeMessage,
+  BackgroundHeaderContainer, HeaderBackgroundRect, LargeHomeImage, BlueberryImage, WelcomeMessageSection, WelcomeMessage,
   TaglineContainer, TaglineText, TaglineSubtitle, TaglineSubtitleDate, TaglineSubtitleLocation, TaglineSubtitleContainer, TaglineButtonContainer,
   TaglineDateLeft, TaglineDateCenter, TaglineDateRight,
-  SectionSpacer, RotatedSideText, EmptyButton, RingDoodleIcon,
+  SectionSpacer, RotatedSideTextLeft, RotatedSideTextRight, EmptyButton, RingDoodleIcon,
   ContentSection, ContentSectionReversed, ContentTextContainer, ContentTitle, ContentBody, ContentImageContainer, ContentImage, ContentImageBackground, ContentImageBackgroundLeft,
   ContentImageTravel, ContentImageSchedule, ContentImageThingsToDo, Ampersand,
   SaveTheDateContainer, SaveTheDateHeader, SaveTheDateTitle, SaveTheDateSubtext, SaveTheDateDetails, DetailColumn, DetailLabel, DetailValue, DetailSubValue,
@@ -20,7 +20,7 @@ function HomePage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      // setScrollY(window.scrollY);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -59,7 +59,8 @@ function HomePage() {
   return (
     <div className="App">
       <NavBar tab={"Home"} />
-      <RotatedSideText>MAY 17, 2026</RotatedSideText>
+      <RotatedSideTextLeft>MAY 17, 2026</RotatedSideTextLeft>
+      <RotatedSideTextRight>CHICAGO, IL</RotatedSideTextRight>
 
       <BackgroundHeaderContainer>
         <LargeHomeImage style={{ transform: `translateY(${parallaxOffset}px)` }} />
@@ -78,6 +79,23 @@ function HomePage() {
           </TaglineButtonContainer>
         </TaglineContainer>
       </BackgroundHeaderContainer>
+
+      <SectionSpacer />
+
+      <FadeInWrapper>
+        <WelcomeMessageSection>
+          <WelcomeMessage>
+            In 1837, the city of Chicago adopted the motto Urbs in Horto, or "City in a Garden."
+            Though Chicago is now a city of glittering skyscrapers and vibrant neighborhoods, it is still filled with beautiful green spaces, from the lakefront trail to over 600 parks.
+            We're excited to invite you to Chicago and our wedding at <b>Garfield Park Conservatory</b>, one of Chicago's public parks, where you can experience a garden in the city that we love.
+          </WelcomeMessage>
+        </WelcomeMessageSection>
+      </FadeInWrapper>
+
+      <SectionSpacer />
+
+      <BlueberryImage />
+      <SectionSpacer />
 
       <SaveTheDateContainer ref={saveTheDateRef} $isVisible={isSaveTheDateVisible}>
         <SaveTheDateHeader>
@@ -101,17 +119,6 @@ function HomePage() {
         </SaveTheDateDetails>
       </SaveTheDateContainer>
 
-      <FadeInWrapper>
-        <WelcomeMessage>
-          In 1837, the city of Chicago adopted the motto Urbs in Horto, or "City in a Garden."
-          Though Chicago is now a city of glittering skyscrapers and vibrant neighborhoods, it is still filled with beautiful green spaces, from the lakefront trail to over 600 parks.
-          We're excited to invite you to Chicago and our wedding at <b>Garfield Park Conservatory</b>, one of Chicago's public parks, where you can experience a garden in the city that we love.
-        </WelcomeMessage>
-      </FadeInWrapper>
-
-      <SectionSpacer />
-
-      <BlueberryImage />
 
       {/* <FadeInWrapper>
         <ContentSection>

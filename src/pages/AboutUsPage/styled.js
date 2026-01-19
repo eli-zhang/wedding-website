@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { accentColor, accentColorBlue } from '../../constants';
+import { accentColor, accentColorBlue, textColorDark } from '../../constants';
 
 // Container for the entire timeline
 export const TimelineContainer = styled.div`
@@ -76,9 +76,9 @@ export const TimelineContent = styled.div`
 
 // Date Text
 export const TimelineDate = styled.h3`
-    font-family: 'Ibarra Real Nova', serif;
+    font-family: 'Gabarito', sans-serif;
     font-size: 2rem;
-    color: #333; // Dark grey from design
+    color: ${accentColorBlue};
     margin-bottom: 15px;
     font-weight: 400;
     letter-spacing: 1px;
@@ -89,7 +89,7 @@ export const TimelineDate = styled.h3`
 export const TimelineDescription = styled.p`
     font-family: 'Jost', sans-serif;
     font-size: 1.1rem;
-    color: #555;
+    color: ${textColorDark};
     line-height: 1.6;
     margin: 0;
     font-style: italic; // Matches screenshot "We met in elementary..."

@@ -61,7 +61,7 @@ export const NavItem = styled.li`
     display: block;
     margin: 0 20px;
 
-    color: ${accentColor};
+    color: ${textColorDark};
     font-size: 1rem;
     font-family: 'Gabarito', sans-serif;
     font-weight: 300;
