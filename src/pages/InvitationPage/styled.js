@@ -8,11 +8,11 @@ import paperTexture from '../../images/paper_texture.jpg';
 import { accentColorGreen } from '../../constants';
 
 const slideIn = keyframes`
-    from {
-        transform: translateX(-100%);
+    0% {
+        transform: translateX(-110%) rotate(-10deg);
     }
-    to {
-        transform: translateX(0);
+    100% {
+        transform: translateX(0) rotate(0deg);
     }
 `;
 
@@ -29,7 +29,7 @@ const openCard = keyframes`
     0% {
         transform: translate(0, 0);
     }
-    50% {
+    60% {
         transform: translate(${2.5 / 4}vw, -${5 / 4 / 0.26794919243}vh) rotate(0deg);
     }
     100% {
@@ -71,8 +71,9 @@ export const InvitationCard = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    animation: ${props => props.$isOpened ? openCard : slideIn} ${props => props.$isOpened ? '3s' : '1.5s'} ease-out forwards;
+    animation: ${props => props.$isOpened ? openCard : slideIn} ${props => props.$isOpened ? '3s' : '1.5s'} cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;;
     z-index: 2;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 `;
 
 
@@ -84,7 +85,7 @@ export const EnvelopeBottom = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    animation: ${props => props.$isOpened ? openEnvelope : slideIn} 1.5s ease-out forwards;
+    animation: ${props => props.$isOpened ? openEnvelope : slideIn} 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;;
     z-index: 1;
 `;
 
@@ -96,7 +97,7 @@ export const EnvelopeTop = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    animation: ${props => props.$isOpened ? openEnvelope : slideIn} 1.5s ease-out forwards;
+    animation: ${props => props.$isOpened ? openEnvelope : slideIn} 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;;
     z-index: 3;
 `;
 
