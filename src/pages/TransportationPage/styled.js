@@ -25,9 +25,9 @@ export const ContentSection = styled.div`
     flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
-    padding: 80px 80px;
+    padding: 60px 20px;
     gap: 60px;
-    max-width: 1400px;
+    max-width: 1040px;
     margin: 0 auto;
 
     @media (max-width: ${mobileBreakpoint}) {

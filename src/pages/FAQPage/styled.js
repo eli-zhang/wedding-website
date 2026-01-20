@@ -13,9 +13,9 @@ export const CenteredPlaceholder = styled.div`
 `
 
 export const FAQContainer = styled.div`
-    max-width: 1000px;
+    max-width: 1040px;
     margin: 0 auto;
-    padding: 80px 80px;
+    padding: 60px 20px;
 `
 
 export const FAQTitle = styled.h1`
