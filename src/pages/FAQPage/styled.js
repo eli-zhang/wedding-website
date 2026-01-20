@@ -25,7 +25,7 @@ export const FAQTitle = styled.h1`
     font-weight: 500;
     line-height: 1.2;
     margin: 0 0 60px 0;
-    text-align: center;
+    text-align: left;
 `
 
 export const FAQList = styled.ul`
@@ -34,13 +34,10 @@ export const FAQList = styled.ul`
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 50px;
 `
 
 export const FAQItem = styled.li`
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    border-bottom: 1px solid rgba(77, 90, 109, 0.1);
 `
 
 export const FAQQuestion = styled.h2`
@@ -50,6 +47,27 @@ export const FAQQuestion = styled.h2`
     font-weight: 500;
     line-height: 1.3;
     margin: 0;
+    padding: 30px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+    }
+`
+
+export const ToggleIcon = styled.span`
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+    transform: ${props => props.isOpen ? 'rotate(45deg)' : 'rotate(0deg)'};
 `
 
 export const FAQAnswer = styled.div`
@@ -59,6 +77,11 @@ export const FAQAnswer = styled.div`
     font-weight: 400;
     line-height: 1.8;
     margin: 0;
+    max-height: ${props => props.isOpen ? '1000px' : '0'};
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: ${props => props.isOpen ? '1' : '0'};
+    padding-bottom: ${props => props.isOpen ? '30px' : '0'};
     
     b {
         font-weight: 600;

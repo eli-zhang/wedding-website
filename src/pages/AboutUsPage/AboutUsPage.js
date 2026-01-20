@@ -24,7 +24,7 @@ const TIMELINE_DATA = [
   {
     id: 1,
     date: "November 01, 2009",
-    description: "We met in elementary school and were both into math.",
+    description: "We met in elementary school and both of us liked math.",
     image: img1
   },
   {

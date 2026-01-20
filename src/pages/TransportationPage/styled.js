@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import trainImage from '../../images/train.jpg';
+import bridgeImage from '../../images/bridge.jpg';
 import { accentColor, accentColorBlue, accentColorLighter, mobileBreakpoint, textColorDark } from '../../constants';
 
 export const CenteredPlaceholder = styled.div`
@@ -117,4 +118,27 @@ export const ContentImageTravel = styled.div`
     background-position: center center;
     z-index: 0;
     filter: contrast(80%) saturate(80%);
+`
+
+export const BridgeImageContainer = styled.div`
+    width: 100%;
+    max-width: 1040px;
+    height: 500px;
+    margin: 0 auto 80px;
+    overflow: hidden;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        height: 300px;
+        padding: 0 20px;
+        width: auto;
+    }
+`
+
+export const BridgeImage = styled.div`
+    width: 100%;
+    height: 100%;
+    background-image: url(${bridgeImage});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
 `
