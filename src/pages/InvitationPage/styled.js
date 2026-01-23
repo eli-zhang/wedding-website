@@ -80,16 +80,25 @@ export const InvitationCard = styled.div`
     position: absolute;
     width: 58vw;
     height: 58vh;
+    animation: ${props => (props.$openState === 'opening' || props.$openState === 'opened') ? openCard : slideIn} 
+               ${props => (props.$openState === 'opening' || props.$openState === 'opened') ? '3s' : '1.5s'} 
+               cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    z-index: ${props => props.$openState === 'opened' ? 4 : 2};
+`;
+
+export const CardInner = styled.div`
+    width: 100%;
+    height: 100%;
     background-image: url(${cardInvitation});
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    animation: ${props => (props.$openState === 'opening' || props.$openState === 'opened') ? openCard : slideIn} 
-               ${props => (props.$openState === 'opening' || props.$openState === 'opened') ? '3s' : '1.5s'} 
-               cubic-bezier(0.19, 1, 0.22, 1) forwards;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-    z-index: ${props => props.$openState === 'opened' ? 4 : 2};
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), scale 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.1s ease-out, scale 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform-style: preserve-3d;
+    transform: perspective(1000px) 
+               rotateX(${props => props.$tilt.x}deg) 
+               rotateY(${props => props.$tilt.y}deg);
 
     &:hover {
         cursor: ${props => props.$openState === 'opened' ? 'pointer' : 'inherit'};
