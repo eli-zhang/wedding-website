@@ -27,7 +27,7 @@ const openCard = keyframes`
     0% {
         transform: translate(0, 0) rotate(15deg);
     }
-    60% {
+    25% {
         transform: translate(${5 / 4}vw, -${5 / 4 / 0.26794919243}vh) rotate(15deg);
     }
     100% {
@@ -63,59 +63,61 @@ export const PageContainer = styled.div`
 
 export const InvitationCard = styled.div`
     position: absolute;
-    width: 79vw;
-    height: 79vh;
+    width: 58vw;
+    height: 58vh;
     background-image: url(${cardInvitation});
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    animation: ${props => props.$isOpened ? openCard : slideIn} ${props => props.$isOpened ? '3s' : '1.5s'} cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;;
+    animation: ${props => props.$isOpened ? openCard : slideIn} ${props => props.$isOpened ? '3s' : '1.5s'} cubic-bezier(0.19, 1, 0.22, 1) forwards;;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
     z-index: 2;
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 
     &:hover {
         transform: ${props => props.$isOpened
-        ? `translate(${5 / 4}vw, -${5 / 4 / 0.26794919243}vh) rotate(15deg) scale(1.15)`
-        : 'rotate(15deg) scale(1.15)'};
+        ? `translate(${5 / 4}vw, -${5 / 4 / 0.26794919243}vh) rotate(0deg) scale(1.25)`
+        : 'rotate(15deg) scale(1.25)'};
     }
 `;
 
 
 export const EnvelopeBottom = styled.div`
     position: absolute;
-    width: 80vw;
-    height: 80vh;
+    width: 60vw;
+    height: 60vh;
     background-image: url(${envelopeBottom});
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    animation: ${props => props.$isOpened ? openEnvelope : slideIn} 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;;
+    animation: ${props => props.$isOpened ? openEnvelope : slideIn} 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
     z-index: 1;
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 
     &:hover {
         transform: ${props => props.$isOpened
-        ? `translate(-10vw, ${20 / 0.26794919243}vh) rotate(15deg) scale(1.15)`
-        : 'scale(1.15)'};
+        ? `translate(-10vw, ${20 / 0.26794919243}vh) rotate(15deg) scale(1.25)`
+        : 'scale(1.25)'};
     }
 `;
 
 export const EnvelopeTop = styled.div`
     position: absolute;
-    width: 80vw;
-    height: 80vh;
+    width: 60vw;
+    height: 60vh;
     background-image: url(${envelopeTop});
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    animation: ${props => props.$isOpened ? openEnvelope : slideIn} 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;;
+    animation: ${props => props.$isOpened ? openEnvelope : slideIn} 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;;
     z-index: 3;
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 
     &:hover {
         transform: ${props => props.$isOpened
-        ? `translate(-10vw, ${20 / 0.26794919243}vh) rotate(15deg) scale(1.15)`
-        : 'scale(1.15)'};
+        ? `translate(-10vw, ${20 / 0.26794919243}vh) rotate(15deg) scale(1.25)`
+        : 'scale(1.25)'};
     }
 `;
 
