@@ -167,3 +167,13 @@ export const NavigationArrow = styled.div`
         white-space: nowrap;
     }
 `;
+
+export const FadeOverlay = styled.div`
+    position: fixed;
+    inset: 0;
+    background-color: #faf4f4;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: ${props => props.$isVisible ? 1 : 0};
+    transition: opacity 0.8s ease-in-out;
+`;

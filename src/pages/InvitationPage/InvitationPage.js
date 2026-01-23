@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { PageContainer, InvitationGroup, EnvelopeBottom, EnvelopeTop, InvitationCard, CardInner, NavigationArrow } from './styled';
-import { Link } from 'react-router-dom';
+import { PageContainer, InvitationGroup, EnvelopeBottom, EnvelopeTop, InvitationCard, CardInner, NavigationArrow, FadeOverlay } from './styled';
+import { Link, useNavigate } from 'react-router-dom';
 
 function InvitationPage() {
     const [openState, setOpenState] = useState('unopened'); // 'unopened', 'opening', 'opened'
     const [tilt, setTilt] = useState({ x: 0, y: 0 });
+    const [isNavigating, setIsNavigating] = useState(false);
+    const navigate = useNavigate();
+
+    const handleContinue = (e) => {
+        e.preventDefault();
+        setIsNavigating(true);
+        setTimeout(() => {
+            navigate('/');
+        }, 800);
+    };
 
     const handleMouseMove = (e) => {
         if (openState !== 'opened') return;
@@ -55,15 +65,14 @@ function InvitationPage() {
                 </InvitationCard>
             </InvitationGroup>
             {openState === 'opened' && (
-                <Link to="/" style={{ textDecoration: 'none' }}>
-                    <NavigationArrow>
-                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                        <span>Continue to website</span>
-                    </NavigationArrow>
-                </Link>
+                <NavigationArrow onClick={handleContinue}>
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                    <span>Continue to website</span>
+                </NavigationArrow>
             )}
+            <FadeOverlay $isVisible={isNavigating} />
         </PageContainer>
     );
 }
