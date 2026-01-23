@@ -19,6 +19,7 @@ import img4 from '../../images/timeline/visiting_each_other.jpg';
 import img5 from '../../images/timeline/crazy_matching.jpg';
 import img6 from '../../images/timeline/moved_in.jpg';
 import img7 from '../../images/timeline/engaged.jpg';
+import starDoodle from '../../images/star_doodle.png';
 
 const TIMELINE_DATA = [
   {
@@ -100,7 +101,7 @@ const TimelineItemComponent = ({ data, index }) => {
         <TimelineDescription>{data.description}</TimelineDescription>
       </TimelineContent>
 
-      <TimelineDot />
+      <TimelineDot src={starDoodle} alt="star" />
 
       <TimelineImageWrapper>
         <TimelineImage src={data.image} alt={`Timeline event ${data.date}`} />

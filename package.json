@@ -1,7 +1,7 @@
 {
   "name": "wedding-website",
   "version": "0.1.0",
-  "homepage": "https://eli-zhang.github.io/wedding-website",
+  "homepage": "https://eliandfrancesca.com",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

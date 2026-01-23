@@ -122,15 +122,13 @@ export const TimelineImage = styled.img`
     }
 `;
 
-// The dot on the timeline
-export const TimelineDot = styled.div`
+// The dot (star) on the timeline
+export const TimelineDot = styled.img`
     position: absolute;
     left: 50%;
-    width: 12px;
-    height: 12px;
-    background-color: #333;
-    border-radius: 50%;
-    transform: translate(-50%, 0);
+    width: 40px;
+    height: auto;
+    transform: translate(-50%, -15px);
     z-index: 1;
 
     @media (max-width: 768px) {
