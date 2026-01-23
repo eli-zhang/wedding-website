@@ -86,7 +86,11 @@ export const InvitationCard = styled.div`
     z-index: ${props => props.$openState === 'opened' ? 4 : 2};
 `;
 
-export const CardInner = styled.div`
+export const CardInner = styled.div.attrs(props => ({
+    style: {
+        transform: `perspective(1000px) rotateX(${props.$tilt.x}deg) rotateY(${props.$tilt.y}deg)`
+    }
+}))`
     width: 100%;
     height: 100%;
     background-image: url(${cardInvitation});
@@ -96,9 +100,6 @@ export const CardInner = styled.div`
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
     transition: transform 0.1s ease-out, scale 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     transform-style: preserve-3d;
-    transform: perspective(1000px) 
-               rotateX(${props => props.$tilt.x}deg) 
-               rotateY(${props => props.$tilt.y}deg);
 
     &:hover {
         cursor: ${props => props.$openState === 'opened' ? 'pointer' : 'inherit'};

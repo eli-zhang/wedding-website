@@ -40,8 +40,6 @@ function InvitationPage() {
         }
     }, [openState]);
 
-    const isOpened = openState === 'opened' || openState === 'opening';
-
     return (
         <PageContainer onClick={handleOpen} $openState={openState}>
             <InvitationGroup $openState={openState}>
