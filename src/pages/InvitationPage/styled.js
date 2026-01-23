@@ -44,7 +44,7 @@ export const PageContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: ${props => props.$isOpened ? 'default' : 'pointer'};
+    cursor: ${props => props.$openState === 'unopened' ? 'pointer' : 'default'};
 
     &::before {
         content: "";
@@ -61,6 +61,21 @@ export const PageContainer = styled.div`
     }
 `;
 
+export const InvitationGroup = styled.div`
+    position: relative;
+    width: 60vw;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: scale 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 1;
+
+    &:hover {
+        scale: ${props => props.$openState === 'unopened' ? 1.1 : 1};
+    }
+`;
+
 export const InvitationCard = styled.div`
     position: absolute;
     width: 58vw;
@@ -69,15 +84,16 @@ export const InvitationCard = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    animation: ${props => props.$isOpened ? openCard : slideIn} ${props => props.$isOpened ? '3s' : '1.5s'} cubic-bezier(0.19, 1, 0.22, 1) forwards;;
+    animation: ${props => (props.$openState === 'opening' || props.$openState === 'opened') ? openCard : slideIn} 
+               ${props => (props.$openState === 'opening' || props.$openState === 'opened') ? '3s' : '1.5s'} 
+               cubic-bezier(0.19, 1, 0.22, 1) forwards;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-    z-index: 2;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: ${props => props.$openState === 'opened' ? 4 : 2};
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), scale 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 
     &:hover {
-        transform: ${props => props.$isOpened
-        ? `translate(${5 / 4}vw, -${5 / 4 / 0.26794919243}vh) rotate(0deg) scale(1.25)`
-        : 'rotate(15deg) scale(1.25)'};
+        cursor: ${props => props.$openState === 'opened' ? 'pointer' : 'inherit'};
+        scale: ${props => props.$openState === 'opened' ? 1.3 : 1};
     }
 `;
 
@@ -90,16 +106,10 @@ export const EnvelopeBottom = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    animation: ${props => props.$isOpened ? openEnvelope : slideIn} 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;;
+    animation: ${props => (props.$openState === 'opening' || props.$openState === 'opened') ? openEnvelope : slideIn} 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
     z-index: 1;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-
-    &:hover {
-        transform: ${props => props.$isOpened
-        ? `translate(-10vw, ${20 / 0.26794919243}vh) rotate(15deg) scale(1.25)`
-        : 'scale(1.25)'};
-    }
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), scale 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 `;
 
 export const EnvelopeTop = styled.div`
@@ -110,15 +120,9 @@ export const EnvelopeTop = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    animation: ${props => props.$isOpened ? openEnvelope : slideIn} 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;;
+    animation: ${props => (props.$openState === 'opening' || props.$openState === 'opened') ? openEnvelope : slideIn} 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
     z-index: 3;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-
-    &:hover {
-        transform: ${props => props.$isOpened
-        ? `translate(-10vw, ${20 / 0.26794919243}vh) rotate(15deg) scale(1.25)`
-        : 'scale(1.25)'};
-    }
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), scale 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 `;
 
 
