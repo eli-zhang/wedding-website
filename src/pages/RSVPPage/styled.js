@@ -150,3 +150,30 @@ export const HelperText = styled.p`
     color: #888;
     margin-top: 10px;
 `
+
+export const ThankYouMessage = styled.p`
+    font-family: 'Jost', sans-serif;
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 30px;
+`
+
+export const BackHomeButton = styled.button`
+    padding: 15px 40px;
+    background-color: transparent;
+    color: ${accentColor};
+    font-family: 'Jost', sans-serif;
+    font-size: 1.2rem;
+    border: 1px solid ${accentColor};
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+
+    &:hover {
+        background-color: ${accentColor};
+        color: white;
+    }
+`

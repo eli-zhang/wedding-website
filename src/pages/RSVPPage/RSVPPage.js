@@ -3,23 +3,64 @@ import NavBar from '../../components/NavBar/NavBar';
 import {
   RSVPContainer, StepContainer, QuestionTitle, FormTitle,
   StyledInput, FormContainer, FormGroup, FormLabel,
-  StyledSelect, SubmitButton, StyledTextArea, HelperText
+  StyledSelect, SubmitButton, StyledTextArea, HelperText,
+  ThankYouMessage, BackHomeButton
 } from './styled';
+import { checkRSVP, updateRSVP } from '../../services/api';
+import { useNavigate } from 'react-router-dom';
 
 function RSVPPage() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [isPasswordRequired, setIsPasswordRequired] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [allowedPlusOnes, setAllowedPlusOnes] = useState(0);
+
   const [formData, setFormData] = useState({
-    attendance: 'I can make it',
-    guestCount: 'No, just me',
-    guests: '',
-    dietary: '',
+    attendance: 'attending',
+    plus_one_names: '',
+    dietary_restrictions: '',
     questions: ''
   });
 
-  const handleNameSubmit = (e) => {
-    if (e.key === 'Enter' && name.trim()) {
-      setStep(2);
+  const handleCheckRSVP = async (e) => {
+    if (e) e.preventDefault();
+    if (!name.trim()) return;
+
+    setIsLoading(true);
+    setErrorMessage('');
+
+    try {
+      const { status, data } = await checkRSVP(name, password);
+
+      if (status === 200) {
+        setFormData({
+          attendance: data.rsvp_status || 'attending',
+          plus_one_names: Array.isArray(data.plus_one_names) ? data.plus_one_names.join(', ') : (data.plus_one_names || ''),
+          dietary_restrictions: data.dietary_restrictions || '',
+          questions: data.questions || ''
+        });
+        setAllowedPlusOnes(data.allowed_plus_ones || 0);
+        setStep(2);
+      } else if (status === 401) {
+        if (data.error === 'Password required') {
+          setIsPasswordRequired(true);
+        } else {
+          setErrorMessage('Invalid password. Please try again.');
+        }
+      } else if (status === 404) {
+        setErrorMessage("We couldn't find your name in our list. Reach out to Eli and Francesca if you need any help.");
+      } else {
+        setErrorMessage(data.error || 'An error occurred. Please try again.');
+      }
+    } catch (error) {
+      setErrorMessage('Network error. Please check your connection.');
+      console.error('Error checking RSVP:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -31,11 +72,25 @@ function RSVPPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // No-op for now
-    console.log('Form submitted:', { name, ...formData });
-    alert("Thanks for RSVPing! (This is a demo)");
+    setIsLoading(true);
+    setErrorMessage('');
+
+    try {
+      const { status, data } = await updateRSVP(name, password, formData);
+
+      if (status === 200) {
+        setStep(3);
+      } else {
+        setErrorMessage(data.error || 'Failed to update RSVP.');
+      }
+    } catch (error) {
+      setErrorMessage('Network error. Please try again.');
+      console.error('Error updating RSVP:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -45,15 +100,32 @@ function RSVPPage() {
         {step === 1 && (
           <StepContainer>
             <QuestionTitle>What's your name?</QuestionTitle>
-            <StyledInput
-              type="text"
-              placeholder="Enter your full name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              onKeyDown={handleNameSubmit}
-              autoFocus
-            />
-            <HelperText>Press enter (↵) to continue</HelperText>
+            <form onSubmit={handleCheckRSVP}>
+              <StyledInput
+                type="text"
+                placeholder="Enter your full name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                autoFocus
+                disabled={isLoading}
+              />
+              {isPasswordRequired && (
+                <>
+                  <QuestionTitle style={{ marginTop: '20px' }}>Password Required</QuestionTitle>
+                  <StyledInput
+                    type="password"
+                    placeholder="Enter password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    autoFocus
+                    disabled={isLoading}
+                  />
+                </>
+              )}
+              {errorMessage && <HelperText style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</HelperText>}
+              <HelperText>Press enter (↵) to continue</HelperText>
+              <button type="submit" style={{ display: 'none' }} disabled={isLoading}>Check</button>
+            </form>
           </StepContainer>
         )}
 
@@ -67,37 +139,26 @@ function RSVPPage() {
                   name="attendance"
                   value={formData.attendance}
                   onChange={handleInputChange}
+                  disabled={isLoading}
                 >
-                  <option value="I can make it">I can make it</option>
-                  <option value="I can't make it">I can't make it</option>
+                  <option value="attending">I can make it</option>
+                  <option value="not_attending">I can't make it</option>
                 </StyledSelect>
               </FormGroup>
 
-              <FormGroup>
-                <FormLabel>Are you bringing any additional guests?</FormLabel>
-                <StyledSelect
-                  name="guestCount"
-                  value={formData.guestCount}
-                  onChange={handleInputChange}
-                >
-                  <option value="No, just me">No, just me</option>
-                  <option value="1 additional guest">1 additional guest</option>
-                  <option value="2 additional guests">2 additional guests</option>
-                  <option value="3 additional guests">3 additional guests</option>
-                </StyledSelect>
-              </FormGroup>
-
-              {formData.guestCount !== 'No, just me' && (
+              {allowedPlusOnes > 0 && (
                 <FormGroup>
-                  <FormLabel>Name of additional guests in your party</FormLabel>
+                  <FormLabel>Name of additional guests in your party (you can bring up to {allowedPlusOnes} plus one{allowedPlusOnes > 1 ? 's' : ''})</FormLabel>
                   <StyledInput
-                    as="input" // Reusing StyledInput style but maybe needs alignment
+                    as="input"
                     style={{ textAlign: 'left', borderBottom: '1px solid #ddd', padding: '10px' }}
-                    name="guests"
+                    name="plus_one_names"
                     placeholder="Justin Time, Chris P. Bacon, etc."
-                    value={formData.guests}
+                    value={formData.plus_one_names}
                     onChange={handleInputChange}
+                    disabled={isLoading}
                   />
+                  <HelperText>Separate names with commas</HelperText>
                 </FormGroup>
               )}
 
@@ -106,10 +167,11 @@ function RSVPPage() {
                 <StyledInput
                   as="input"
                   style={{ textAlign: 'left', borderBottom: '1px solid #ddd', padding: '10px' }}
-                  name="dietary"
+                  name="dietary_restrictions"
                   placeholder="e.g. Vegetarian, Gluten-free..."
-                  value={formData.dietary}
+                  value={formData.dietary_restrictions}
                   onChange={handleInputChange}
+                  disabled={isLoading}
                 />
               </FormGroup>
 
@@ -120,11 +182,26 @@ function RSVPPage() {
                   placeholder="Let us know and we'll be happy to get back to you!"
                   value={formData.questions}
                   onChange={handleInputChange}
+                  disabled={isLoading}
                 />
               </FormGroup>
 
-              <SubmitButton type="submit">Submit RSVP</SubmitButton>
+              {errorMessage && <HelperText style={{ color: 'red', marginBottom: '10px' }}>{errorMessage}</HelperText>}
+              <SubmitButton type="submit" disabled={isLoading}>
+                {isLoading ? 'Updating...' : 'Submit RSVP'}
+              </SubmitButton>
             </FormContainer>
+          </StepContainer>
+        )}
+        {step === 3 && (
+          <StepContainer>
+            <QuestionTitle>Thanks for RSVPing!</QuestionTitle>
+            <ThankYouMessage>
+              You can update your RSVP status at any time.
+            </ThankYouMessage>
+            <BackHomeButton onClick={() => navigate('/')}>
+              Back to home
+            </BackHomeButton>
           </StepContainer>
         )}
       </RSVPContainer>
