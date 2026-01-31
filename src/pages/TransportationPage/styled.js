@@ -1,7 +1,16 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import trainImage from '../../images/train.jpg';
 import bridgeImage from '../../images/bridge.jpg';
 import { accentColor, accentColorBlue, accentColorLighter, mobileBreakpoint, textColorDark } from '../../constants';
+
+const swipeRight = keyframes`
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+`;
 
 export const CenteredPlaceholder = styled.div`
     display: flex;
@@ -140,5 +149,8 @@ export const BridgeImage = styled.div`
     background-image: url(${bridgeImage});
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
+    background-position: bottom center;
+    will-change: clip-path;
+    clip-path: inset(0 100% 0 0);
+    animation: ${props => props.$isLoaded ? swipeRight : 'none'} 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 `

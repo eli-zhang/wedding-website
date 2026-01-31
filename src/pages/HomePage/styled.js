@@ -2,7 +2,6 @@ import styled, { keyframes } from 'styled-components';
 import blueberryImage from '../../images/blueberry_other.jpg';
 import holdingHandsImage from '../../images/home_page_lower_image.jpg';
 import garfieldParkImage from '../../images/garfield_park.png';
-import zooImage from '../../images/lincoln_park_zoo.jpg';
 import trainImage from '../../images/train.jpg';
 import paperTexture from '../../images/paper_texture.jpg';
 import { accentColor, accentColorBlue, accentColorGreen, accentColorTitle, accentColorLighter, backgroundPageColor, mobileBreakpoint, textColorDark } from '../../constants';
@@ -515,26 +514,6 @@ export const ContentImageSchedule = styled.div`
     max-width: 500px;
     height: 600px;
     background-image: url(${holdingHandsImage});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    z-index: 0;
-    filter: contrast(80%) saturate(80%);
-    @media (max-width: ${mobileBreakpoint}) {
-        width: calc(100% + 40px);
-        margin-left: -20px;
-        margin-right: -20px;
-        max-width: none;
-        height: 400px;
-    }
-`
-
-export const ContentImageThingsToDo = styled.div`
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    height: 600px;
-    background-image: url(${zooImage});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;

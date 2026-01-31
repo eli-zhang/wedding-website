@@ -4,7 +4,7 @@ import {
   RSVPContainer, StepContainer, QuestionTitle, FormTitle,
   StyledInput, FormContainer, FormGroup, FormLabel,
   StyledSelect, SubmitButton, StyledTextArea, HelperText,
-  ThankYouMessage, BackHomeButton
+  ThankYouMessage, BackHomeButton, PasswordInputWrapper
 } from './styled';
 import { checkRSVP, updateRSVP } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
@@ -108,10 +108,10 @@ function RSVPPage() {
                 onChange={(e) => setName(e.target.value)}
                 autoFocus
                 disabled={isLoading}
+                large
               />
               {isPasswordRequired && (
-                <>
-                  <QuestionTitle style={{ marginTop: '20px' }}>Password Required</QuestionTitle>
+                <PasswordInputWrapper>
                   <StyledInput
                     type="password"
                     placeholder="Enter password"
@@ -119,8 +119,9 @@ function RSVPPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     autoFocus
                     disabled={isLoading}
+                    large
                   />
-                </>
+                </PasswordInputWrapper>
               )}
               {errorMessage && <HelperText style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</HelperText>}
               <HelperText>Press enter (↵) to continue</HelperText>
@@ -130,8 +131,7 @@ function RSVPPage() {
         )}
 
         {step === 2 && (
-          <StepContainer>
-            <FormTitle>RSVP for Francesca & Eli's Wedding</FormTitle>
+          <StepContainer centered>
             <FormContainer onSubmit={handleSubmit}>
               <FormGroup>
                 <FormLabel>Can you make it to the wedding?</FormLabel>
@@ -194,8 +194,8 @@ function RSVPPage() {
           </StepContainer>
         )}
         {step === 3 && (
-          <StepContainer>
-            <QuestionTitle>Thanks for RSVPing!</QuestionTitle>
+          <StepContainer centered>
+            <QuestionTitle style={{ textAlign: 'center' }}>Thanks for RSVPing!</QuestionTitle>
             <ThankYouMessage>
               You can update your RSVP status at any time.
             </ThankYouMessage>

@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { accentColor, accentColorBlue, accentColorLighter, mobileBreakpoint } from "../../constants";
 
 export const RSVPContainer = styled.div`
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 100px 20px;
-    min-height: 60vh;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     @media (max-width: ${mobileBreakpoint}) {
         padding: 60px 20px;
@@ -20,7 +20,7 @@ export const StepContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: ${props => props.centered ? 'center' : 'flex-start'};
     gap: 40px;
     animation: fadeIn 0.5s ease-in;
     
@@ -32,10 +32,14 @@ export const StepContainer = styled.div`
 
 export const QuestionTitle = styled.h2`
     font-family: 'Gabarito', sans-serif;
-    font-size: 3rem;
+    font-size: 4rem;
     color: ${accentColor};
-    text-align: center;
+    text-align: left;
     font-weight: 500;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: 2.5rem;
+    }
 `
 
 export const FormTitle = styled.h1`
@@ -49,16 +53,20 @@ export const FormTitle = styled.h1`
 
 export const StyledInput = styled.input`
     width: 100%;
-    max-width: 400px;
+    max-width: ${props => props.large ? '1000px' : '500px'};
     padding: 15px 0;
     border: none;
     border-bottom: 2px solid #ccc;
     font-family: 'Jost', sans-serif;
-    font-size: 1.5rem;
+    font-size: ${props => props.large ? '2.5rem' : '1.5rem'};
     color: #333;
     background: transparent;
     text-align: left;
     transition: border-color 0.3s;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: ${props => props.large ? '2rem' : '1.2rem'};
+    }
 
     &:focus {
         outline: none;
@@ -82,6 +90,7 @@ export const FormGroup = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-items: flex-start;
 `
 
 export const FormLabel = styled.label`
@@ -175,5 +184,26 @@ export const BackHomeButton = styled.button`
     &:hover {
         background-color: ${accentColor};
         color: white;
+    }
+`
+
+export const PasswordInputWrapper = styled.div`
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 20px;
+    animation: slideDownFadeIn 0.5s ease-out forwards;
+    overflow: hidden;
+
+    @keyframes slideDownFadeIn {
+        from {
+            opacity: 0;
+            max-height: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            max-height: 200px;
+            transform: translateY(0);
+        }
     }
 `

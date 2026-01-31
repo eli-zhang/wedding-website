@@ -1,10 +1,21 @@
+import { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
+import bridgeImage from '../../images/bridge.jpg';
 import {
   ContentSection, ContentTextContainer, ContentTitle, ContentBody,
   ContentSubsection, ContentSubsectionTitle, BridgeImageContainer, BridgeImage
 } from './styled';
 
 function TransportationPage() {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = bridgeImage;
+    img.onload = () => setIsImageLoaded(true);
+    if (img.complete) setIsImageLoaded(true);
+  }, []);
+
   return (
     <>
       <NavBar tab={"Transportation"} />
@@ -23,7 +34,7 @@ function TransportationPage() {
         </ContentTextContainer>
       </ContentSection>
       <BridgeImageContainer>
-        <BridgeImage />
+        <BridgeImage $isLoaded={isImageLoaded} />
       </BridgeImageContainer>
     </>
   );
