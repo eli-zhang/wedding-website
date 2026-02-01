@@ -17,11 +17,10 @@ function RSVPPage() {
   const [isPasswordRequired, setIsPasswordRequired] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [allowedPlusOnes, setAllowedPlusOnes] = useState(0);
 
   const [formData, setFormData] = useState({
     attendance: 'attending',
-    plus_one_names: '',
+    party_members: [],
     dietary_restrictions: '',
     questions: ''
   });
@@ -39,11 +38,10 @@ function RSVPPage() {
       if (status === 200) {
         setFormData({
           attendance: data.rsvp_status || 'attending',
-          plus_one_names: Array.isArray(data.plus_one_names) ? data.plus_one_names.join(', ') : (data.plus_one_names || ''),
+          party_members: data.party_members || [],
           dietary_restrictions: data.dietary_restrictions || '',
           questions: data.questions || ''
         });
-        setAllowedPlusOnes(data.allowed_plus_ones || 0);
         setStep(2);
       } else if (status === 401) {
         if (data.error === 'Password required') {
@@ -72,18 +70,48 @@ function RSVPPage() {
     }));
   };
 
+  const handlePartyMemberChange = (index, value) => {
+    setFormData(prev => {
+      const newPartyMembers = [...prev.party_members];
+      newPartyMembers[index] = { ...newPartyMembers[index], rsvp_status: value };
+      return { ...prev, party_members: newPartyMembers };
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setErrorMessage('');
 
     try {
-      const { status, data } = await updateRSVP(name, password, formData);
+      // 1. Update primary guest
+      const updateRequests = [
+        updateRSVP(name, password, {
+          attendance: formData.attendance,
+          dietary_restrictions: formData.dietary_restrictions,
+          questions: formData.questions
+        })
+      ];
 
-      if (status === 200) {
+      // 2. Update other party members who are not "pending"
+      formData.party_members.forEach(member => {
+        if (member.rsvp_status !== 'pending') {
+          updateRequests.push(
+            updateRSVP(member.name, password, {
+              attendance: member.rsvp_status,
+            })
+          );
+        }
+      });
+
+      const results = await Promise.all(updateRequests);
+      const allSuccessful = results.every(res => res.status === 200);
+
+      if (allSuccessful) {
         setStep(3);
       } else {
-        setErrorMessage(data.error || 'Failed to update RSVP.');
+        const failed = results.find(res => res.status !== 200);
+        setErrorMessage(failed?.data?.error || 'Failed to update some RSVP statuses.');
       }
     } catch (error) {
       setErrorMessage('Network error. Please try again.');
@@ -133,6 +161,9 @@ function RSVPPage() {
         {step === 2 && (
           <StepContainer centered>
             <FormContainer onSubmit={handleSubmit}>
+              <HelperText style={{ textAlign: 'center', marginBottom: '20px', fontSize: '1.1rem', color: '#666' }}>
+                You can change your RSVP status at any time until April 5th.
+              </HelperText>
               <FormGroup>
                 <FormLabel>Can you make it to the wedding?</FormLabel>
                 <StyledSelect
@@ -146,21 +177,20 @@ function RSVPPage() {
                 </StyledSelect>
               </FormGroup>
 
-              {allowedPlusOnes > 0 && (
-                <FormGroup>
-                  <FormLabel>Name of additional guests in your party (you can bring up to {allowedPlusOnes} plus one{allowedPlusOnes > 1 ? 's' : ''})</FormLabel>
-                  <StyledInput
-                    as="input"
-                    style={{ textAlign: 'left', borderBottom: '1px solid #ddd', padding: '10px' }}
-                    name="plus_one_names"
-                    placeholder="Justin Time, Chris P. Bacon, etc."
-                    value={formData.plus_one_names}
-                    onChange={handleInputChange}
+              {formData.party_members.map((member, index) => (
+                <FormGroup key={index}>
+                  <FormLabel>Can {member.name} make it to the wedding?</FormLabel>
+                  <StyledSelect
+                    value={member.rsvp_status}
+                    onChange={(e) => handlePartyMemberChange(index, e.target.value)}
                     disabled={isLoading}
-                  />
-                  <HelperText>Separate names with commas</HelperText>
+                  >
+                    <option value="attending">They can make it</option>
+                    <option value="not_attending">They can't make it</option>
+                    <option value="pending">Pending</option>
+                  </StyledSelect>
                 </FormGroup>
-              )}
+              ))}
 
               <FormGroup>
                 <FormLabel>Any dietary restrictions?</FormLabel>
@@ -176,7 +206,7 @@ function RSVPPage() {
               </FormGroup>
 
               <FormGroup>
-                <FormLabel>Any other questions?</FormLabel>
+                <FormLabel>Any other questions? Any issues with finding lodging?</FormLabel>
                 <StyledTextArea
                   name="questions"
                   placeholder="Let us know and we'll be happy to get back to you!"

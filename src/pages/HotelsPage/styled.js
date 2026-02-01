@@ -149,18 +149,53 @@ export const BookButton = styled.a`
     display: inline-block;
     background-color: ${accentColor};
     color: white;
-    padding: 12px 30px;
-    border-radius: 4px;
+
+    border: 1px solid ${accentColor};
+    padding: 15px 100px;
+    font-size: 1.2rem;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.05);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 1.1rem;
-    margin-top: 20px;
-    transition: all 0.3s ease;
+    text-align: center;
+
+    transition: background-color 0.5s ease;
 
     &:hover {
-        opacity: 0.9;
-        transform: translateY(-2px);
+        cursor: pointer;
+        background-color: white;
+        color: ${accentColor};
     }
+
+    @media (max-width: ${mobileBreakpoint}) {
+        padding: 15px 50px;
+        font-size: 1.2rem;
+        display: block;
+    }
+`
+
+export const OtherOptionsSection = styled.div`
+    margin-top: 80px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 60px;
+`
+
+export const NeighborhoodList = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+`
+
+export const NeighborhoodItem = styled.div`
+    line-height: 1.6;
+    font-size: 1.05rem;
+`
+
+export const NeighborhoodName = styled.span`
+    font-weight: 600;
+    color: ${accentColor};
 `
 
 export const ContactText = styled.p`

@@ -5,7 +5,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {
   Routes, Route, HashRouter,
-  // BrowserRouter - Replace HashRouter
+  BrowserRouter
 } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import RSVPPage from './pages/RSVPPage/RSVPPage';
@@ -21,7 +21,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root')
 );
 root.render(
-  <HashRouter >
+  <BrowserRouter >
     <ScrollToTop />
     <Routes>
       <Route path="/">
@@ -50,7 +50,7 @@ root.render(
       </Route>
       <Route path="*" element={<HomePage />} />
     </Routes>
-  </HashRouter >
+  </BrowserRouter >
 
 );
 

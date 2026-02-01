@@ -17,11 +17,6 @@ export const checkRSVP = async (name, password = '') => {
 };
 
 export const updateRSVP = async (name, password = '', formData) => {
-    // Convert plus_one_names string to list if it's a string
-    const plusOneList = typeof formData.plus_one_names === 'string'
-        ? formData.plus_one_names.split(',').map(n => n.trim()).filter(n => n)
-        : formData.plus_one_names;
-
     const response = await fetch(`${API_BASE_URL}/rsvp/update`, {
         method: 'POST',
         headers: {
@@ -31,7 +26,6 @@ export const updateRSVP = async (name, password = '', formData) => {
             name: name.trim(),
             password: password.trim(),
             rsvp_status: formData.attendance,
-            plus_one_names: plusOneList,
             dietary_restrictions: formData.dietary_restrictions,
             questions: formData.questions
         }),

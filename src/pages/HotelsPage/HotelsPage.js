@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
-import chicagoDoodle from '../../images/chicago_doodle.png';
+import hotelDoodle from '../../images/hotel_doodle.png';
 import hotelImage from '../../images/hotel.jpg';
 import {
     PageContainer,
     HeaderContainer,
     HeaderTextContainer,
     PageTitle,
-    TitleImage,
     TitleContainer,
-    InlineTitleImage,
     PageSubtitle,
     HotelSection,
     HotelBlockHeader,
@@ -22,7 +20,11 @@ import {
     BookButton,
     ContactText,
     HotelImageContainer,
-    HotelImage
+    HotelImage,
+    OtherOptionsSection,
+    NeighborhoodList,
+    NeighborhoodItem,
+    NeighborhoodName
 } from './styled';
 
 function HotelsPage() {
@@ -43,13 +45,11 @@ function HotelsPage() {
                     <HeaderTextContainer>
                         <TitleContainer>
                             <PageTitle>Lodging</PageTitle>
-                            <InlineTitleImage src={chicagoDoodle} alt="Chicago Doodle" />
                         </TitleContainer>
                         <PageSubtitle>
                             We have reserved a block of rooms for our guests at the Hampton Inn.
                         </PageSubtitle>
                     </HeaderTextContainer>
-                    <TitleImage src={chicagoDoodle} alt="Chicago Doodle" />
                 </HeaderContainer>
 
                 <HotelImageContainer>
@@ -116,6 +116,40 @@ function HotelsPage() {
                     <ContactText>
                         If you run into issues when booking, please reach out to us!
                     </ContactText>
+
+                    <OtherOptionsSection>
+                        <HotelBlockHeader>OTHER OPTIONS</HotelBlockHeader>
+                        <AddressInfo>
+                            A massive restaurant industry convention is happening in Chicago during the weekend of our wedding, making hotel prices very high. If possible, book your accommodations soon.
+                        </AddressInfo>
+
+                        <ContentBlock>
+                            <AddressInfo style={{ marginBottom: '20px' }}>
+                                If you are interested in finding accommodations on your own: Rather than staying in the immediate vicinity of Garfield Park Conservatory, we recommend the following neighborhoods if you’re unfamiliar with Chicago to prioritize safety and proximity to “downtown” tourist attractions:
+                            </AddressInfo>
+                            <NeighborhoodList>
+                                <NeighborhoodItem>
+                                    <NeighborhoodName>West Loop/Fulton Market: </NeighborhoodName>
+                                    This is the neighborhood where we live. It is relatively close to the wedding venue and is full of the trendiest restaurants and bars, though they can be expensive.
+                                </NeighborhoodItem>
+                                <NeighborhoodItem>
+                                    <NeighborhoodName>The Loop: </NeighborhoodName>
+                                    Walk to classic Chicago attractions like “the Bean” in Millennium Park, the Art Institute of Chicago, and the lakefront. The Loop feels more touristy and there can be fewer food options available at night.
+                                </NeighborhoodItem>
+                                <NeighborhoodItem>
+                                    <NeighborhoodName>Streeterville and River North: </NeighborhoodName>
+                                    These two neighborhoods are divided by the Magnificent Mile, which is full of shopping, and a good mix of restaurants and other attractions, including the Riverwalk.
+                                </NeighborhoodItem>
+                            </NeighborhoodList>
+                        </ContentBlock>
+
+                        <ContentBlock>
+                            <ContentHeader>Airbnbs and Residential Areas</ContentHeader>
+                            <AddressInfo style={{ marginBottom: '20px' }}>
+                                If you are looking at Airbnbs in more residential areas (not a bad option considering the high hotel prices!), friends and family have enjoyed living or staying in Bridgeport (one of the city’s most diverse neighborhoods, with a large Chinese population) and Pilsen (home to a large Mexican-American population with amazing restaurants and the National Museum of Mexican Art). Lincoln Park is a peaceful residential area close to many green spaces, the lakefront, and the zoo, and West Town and Wicker Park are trendy areas with fun vintage stores and ample food options. However, all of these areas are further from downtown. We love exploring Chicago’s neighborhoods, but <b>please do research into the safety of each area where you’re considering staying</b>. Please reach out if you have questions—we’d love to help!
+                            </AddressInfo>
+                        </ContentBlock>
+                    </OtherOptionsSection>
                 </HotelSection>
             </PageContainer>
         </>
