@@ -42,6 +42,7 @@ function RSVPPage() {
           dietary_restrictions: data.dietary_restrictions || '',
           questions: data.questions || ''
         });
+        if (data.name) setName(data.name);
         setStep(2);
       } else if (status === 401) {
         if (data.error === 'Password required') {
@@ -174,6 +175,7 @@ function RSVPPage() {
                 >
                   <option value="attending">I can make it</option>
                   <option value="not_attending">I can't make it</option>
+                  <option value="pending">Pending</option>
                 </StyledSelect>
               </FormGroup>
 

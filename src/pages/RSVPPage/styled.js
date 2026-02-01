@@ -4,7 +4,7 @@ import { accentColor, accentColorBlue, accentColorLighter, mobileBreakpoint } fr
 export const RSVPContainer = styled.div`
     max-width: 1200px;
     margin: 0 auto;
-    padding: 100px 20px;
+    padding: 20px;
     min-height: 80vh;
     display: flex;
     flex-direction: column;
