@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.f2bb418b.css",
-    "main.js": "/static/js/main.04f10a73.js",
+    "main.js": "/static/js/main.74794c77.js",
     "static/js/787.b26ea9af.chunk.js": "/static/js/787.b26ea9af.chunk.js",
     "static/media/engaged.jpg": "/static/media/engaged.c0f5a48d321b7c77fa1f.jpg",
     "static/media/card_invitation.png": "/static/media/card_invitation.31cca2a80326dde3b4f1.png",
@@ -15,9 +15,10 @@
     "static/media/home_page_lower_image.jpg": "/static/media/home_page_lower_image.745077930f3a6404d95c.jpg",
     "static/media/train.jpg": "/static/media/train.156de7696dde1edf0782.jpg",
     "static/media/envelope_top.png": "/static/media/envelope_top.84ca74ba8cf14c8ee2a4.png",
+    "static/media/hotel_doodle.png": "/static/media/hotel_doodle.138fd05cd0c0cf7c6bc2.png",
     "static/media/kiddos.jpg": "/static/media/kiddos.b30ac7096283eca54d31.jpg",
+    "static/media/star_doodle.png": "/static/media/star_doodle.459e2d418cd0a4768708.png",
     "static/media/ring_doodle.png": "/static/media/ring_doodle.691c1ccdc1e148e60bf9.png",
-    "static/media/star_doodle.png": "/static/media/star_doodle.9239a4295a18ab454d40.png",
     "static/media/paper_texture.jpg": "/static/media/paper_texture.61b26684d48bec5528d9.jpg",
     "static/media/prom.jpg": "/static/media/prom.e2bdd14ac7d0c409002c.jpg",
     "static/media/long_ago.jpg": "/static/media/long_ago.55981eab76ab705ac4b0.jpg",
@@ -25,11 +26,11 @@
     "static/media/visiting_each_other.jpg": "/static/media/visiting_each_other.263acde781c1753f6d85.jpg",
     "index.html": "/index.html",
     "main.f2bb418b.css.map": "/static/css/main.f2bb418b.css.map",
-    "main.04f10a73.js.map": "/static/js/main.04f10a73.js.map",
+    "main.74794c77.js.map": "/static/js/main.74794c77.js.map",
     "787.b26ea9af.chunk.js.map": "/static/js/787.b26ea9af.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f2bb418b.css",
-    "static/js/main.04f10a73.js"
+    "static/js/main.74794c77.js"
   ]
 }
