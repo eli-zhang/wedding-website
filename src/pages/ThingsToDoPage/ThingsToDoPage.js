@@ -99,7 +99,7 @@ const neighborhoodData = [
   },
   {
     name: "West Town",
-    subtitle: "thrift stores and some of our favorite food [~3 miles from the hotel]",
+    subtitle: "vintage stores and some of our favorite food [~3 miles from the hotel]",
     activities: [
       "Walk around this neighborhood and pop into fun stores like The Happy Hour Shop and The Center for Order and Experimentation. If you want to visit the famed Kasama for breakfast, we recommend ordering online so that you can avoid standing in line for hours (literally)."
     ],
@@ -135,7 +135,7 @@ const neighborhoodData = [
   },
   {
     name: "Wicker Park",
-    subtitle: "more vintage stores in a fun area [~4 miles from the hotel]",
+    subtitle: "thrift stores in a fun area [~4 miles from the hotel]",
     activities: [
       "You could spend the whole day thrifting here, at stores like Happy Belated Clothing (where used clothing from Japan is sold by the pound), Crossroads Trading, and Kokorokoko. Wicker Park (the park itself) is very pleasant on a sunny day, as is a stroll along The 606, an elevated urban trail."
     ]

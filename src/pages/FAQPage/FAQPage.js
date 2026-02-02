@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import { FAQContainer, FAQTitle, FAQList, FAQItem, FAQQuestion, FAQAnswer, ToggleIcon } from './styled';
 
@@ -32,7 +33,11 @@ function FAQPage() {
     },
     {
       question: "How can I get to and from the venue? Is parking available?",
-      answer: "Please see our transportation guide linked here."
+      answer: (
+        <>
+          Please see our transportation guide <Link to="/transportation">linked here</Link>.
+        </>
+      )
     },
     {
       question: "What is the RSVP deadline?",
@@ -48,7 +53,7 @@ function FAQPage() {
     },
     {
       question: "Is there a registry?",
-      answer: "Your presence at our wedding and in our life is already the best gift we can imagine, and we know that many of you will have traveled a long distance to get to Chicago or are still students. If you truly want to, we'll have a link to Venmo available."
+      answer: "Your presence at our wedding and in our life is already the best gift we can imagine, and we know that many of you will have traveled a long distance to get to Chicago or are still students. We may be creating a registry or honeymoon fund in the future."
     },
     {
       question: "Can I arrive early to the wedding?",

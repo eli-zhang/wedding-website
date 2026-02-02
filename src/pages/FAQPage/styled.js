@@ -100,4 +100,14 @@ export const FAQAnswer = styled.div`
     li {
         margin: 8px 0;
     }
+
+    a {
+        color: ${accentColorBlue};
+        text-decoration: none;
+        font-weight: 500;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 `
