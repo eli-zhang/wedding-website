@@ -195,7 +195,7 @@ function RSVPPage() {
               ))}
 
               <FormGroup>
-                <FormLabel>Any dietary restrictions?</FormLabel>
+                <FormLabel>Any dietary restrictions? If the wedding cake contains alcohol, would you like to opt for an alcohol-free option?</FormLabel>
                 <StyledInput
                   as="input"
                   style={{ textAlign: 'left', borderBottom: '1px solid #ddd', padding: '10px' }}

@@ -52,8 +52,8 @@ export const PageTitle = styled.h1`
     margin: 0;
     text-align: left;
 
-    @media (max-width: 768px) {
-        font-size: 2.8rem;
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: 2.2rem;
     }
 `
 

@@ -35,6 +35,11 @@ export const Ampersand = styled.span`
     margin: -30px 0;
     position: relative;
     z-index: -1;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: 3rem;
+        margin: -15px 0;
+    }
 `
 
 export const EmptyButton = styled.button`
@@ -204,6 +209,10 @@ export const TaglineText = styled.div`
     align-items: center;
     text-transform: uppercase;
 
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: 2.5rem;
+    }
+
     & > div {
         position: relative;
         z-index: 1;
@@ -233,6 +242,11 @@ export const TaglineSubtitle = styled.div`
     margin: 10px;
     letter-spacing: 0.4rem;
     animation: ${fadeIn} 0.7s ease-in;
+    
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: 1.2rem;
+        letter-spacing: 0.2rem;
+    }
     
     b {
         font-size: 1.8rem;
@@ -271,6 +285,11 @@ export const TaglineSubtitleDate = styled.div`
     justify-content: center;
     gap: 20px;
     animation: ${fadeIn} 0.7s ease-in;
+    
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: 2rem;
+        gap: 10px;
+    }
     
     b {
         font-size: 1.8rem;
@@ -627,6 +646,10 @@ export const SaveTheDateTitle = styled.h2`
     color: ${backgroundPageColor};
     font-weight: 400;
     margin: 0;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: 2.5rem;
+    }
 `
 
 export const SaveTheDateSubtext = styled.p`
@@ -670,6 +693,9 @@ export const DetailValue = styled.span`
     font-weight: 400;
     line-height: 100%;
 
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: 2rem;
+    }
 `
 
 export const DetailSubValue = styled.span`

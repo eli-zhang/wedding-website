@@ -16,7 +16,8 @@ export const Title = styled.h1`
     }
 
     @media (max-width: ${mobileBreakpoint}) {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        margin: 0 20px;
     }
 `
 
@@ -151,6 +152,7 @@ export const HamburgerButton = styled.div`
 
     @media (max-width: ${mobileBreakpoint}) {
         display: flex;
+        margin-right: 0;
     }
 `
 

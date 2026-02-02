@@ -60,6 +60,10 @@ export const ContentTitle = styled.h2`
     font-weight: 500;
     line-height: 1.2;
     margin: 0;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: 2rem;
+    }
 `
 
 export const ContentBody = styled.p`
@@ -110,9 +114,7 @@ export const ContentImageBackground = styled.div`
     z-index: 0;
 
     @media (max-width: ${mobileBreakpoint}) {
-        left: -20px;
-        top: -20px;
-        width: calc(100% + 40px);
+        display: none;
     }
 `
 

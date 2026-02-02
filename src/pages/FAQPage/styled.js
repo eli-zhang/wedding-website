@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { accentColor, accentColorBlue, textColorDark } from '../../constants';
+import { accentColor, accentColorBlue, textColorDark, mobileBreakpoint } from '../../constants';
 
 export const CenteredPlaceholder = styled.div`
     display: flex;
@@ -26,6 +26,11 @@ export const FAQTitle = styled.h1`
     line-height: 1.2;
     margin: 0 0 60px 0;
     text-align: left;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
 `
 
 export const FAQList = styled.ul`
