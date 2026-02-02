@@ -120,7 +120,7 @@ function HotelsPage() {
                     <OtherOptionsSection>
                         <HotelBlockHeader>OTHER OPTIONS</HotelBlockHeader>
                         <AddressInfo>
-                            A massive restaurant industry convention is happening in Chicago during the weekend of our wedding, making hotel prices very high. If possible, book your accommodations soon.
+                            A restaurant industry convention is happening in Chicago during the weekend of our wedding, making hotel prices very high. If possible, book your accommodations soon.
                         </AddressInfo>
 
                         <ContentBlock>

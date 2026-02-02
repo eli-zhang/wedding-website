@@ -156,3 +156,31 @@ export const RecommendationHeader = styled.h3`
     opacity: 0.8;
 `
 
+export const ImageGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+`
+
+export const ImageItem = styled.img`
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+
+    @media (max-width: 768px) {
+        height: 200px;
+    }
+`
+

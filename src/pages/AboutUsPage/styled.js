@@ -18,7 +18,7 @@ export const TimelineContainer = styled.div`
         bottom: 0;
         left: 50%;
         width: 1px;
-        background-image: linear-gradient(to bottom, #333 30%, rgba(255,255,255,0) 0%);
+        background-image: linear-gradient(to bottom, ${accentColorBlue} 30%, rgba(255,255,255,0) 0%);
         background-position: left;
         background-size: 1px 7px; // Dotted effect
         background-repeat: repeat-y;

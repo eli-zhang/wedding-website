@@ -1,6 +1,17 @@
 import { useState } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import chicagoDoodle from '../../images/chicago_doodle.png';
+
+// Import neighborhood images
+import magMile1 from '../../images/things_to_do/mag_mile1.jpg';
+import theLoop1 from '../../images/things_to_do/the_loop1.jpg';
+import riverNorth1 from '../../images/things_to_do/river_north1.jpg';
+import westLoop1 from '../../images/things_to_do/west_loop1.jpg';
+import lincolnPark1 from '../../images/things_to_do/lincoln_park1.jpg';
+import hydePark1 from '../../images/things_to_do/hyde_park1.jpg';
+import hydePark2 from '../../images/things_to_do/hyde_park2.jpg';
+import hydePark3 from '../../images/things_to_do/hyde_park3.jpg';
+
 import {
   PageContainer,
   HeaderContainer,
@@ -18,13 +29,16 @@ import {
   ContentList,
   ContentItem,
   RecommendationHeader,
-  ContentBlock
+  ContentBlock,
+  ImageGrid,
+  ImageItem
 } from './styled';
 
 const neighborhoodData = [
   {
     name: "Near the Hotel (Magnificent Mile)",
     subtitle: "shopping, lakefront, Navy Pier [<1 mile from the hotel]",
+    images: [magMile1],
     activities: [
       "Shop on the Magnificent Mile.",
       "Walk, run, or bike along Chicago's sublime lakefront trail.",
@@ -40,6 +54,7 @@ const neighborhoodData = [
   {
     name: "The Loop",
     subtitle: "The Bean, rock climbing, art museum [~1 mile from the hotel]",
+    images: [theLoop1],
     activities: [
       "Visit Cloud Gate, aka “the Bean” in Millennium Park.",
       "Visit the Art Institute of Chicago and view works like A Sunday on La Grande Jatte and American Gothic. If you can, try to see Paradise Lost by Raqib Shaw, an epic 100-foot-long work, and let us know what you think!",
@@ -49,6 +64,7 @@ const neighborhoodData = [
   {
     name: "River North",
     subtitle: "Riverwalk and doughnuts [~1 mile from the hotel]",
+    images: [riverNorth1],
     activities: [
       "Enjoy views along the Chicago Riverwalk. Then try the almond old-fashioned doughnuts at Doughnut Vault [$]. Arrive early (before 10 am) so you get there before the doughnuts sell out."
     ]
@@ -56,6 +72,7 @@ const neighborhoodData = [
   {
     name: "West Loop",
     subtitle: "gourmet restaurants and interesting stores [~2 miles from the hotel]",
+    images: [westLoop1],
     activities: [
       "Explore the neighborhood where we've lived for the past year and a half. Enjoy the storefronts along Randolph Street, and if you can keep walking, you can visit the Patagonia store, which has an area dedicated to selling lightly used clothing."
     ],
@@ -68,6 +85,7 @@ const neighborhoodData = [
   {
     name: "Lincoln Park",
     subtitle: "free zoo and a peaceful neighborhood [~2 miles from the hotel]",
+    images: [lincolnPark1],
     activities: [
       "Visit the red pandas and other animals at the free Lincoln Park Zoo, then take a tranquil walk around Lincoln Park (the park and the neighborhood)."
     ]
@@ -125,6 +143,7 @@ const neighborhoodData = [
   {
     name: "Hyde Park",
     subtitle: "Museum of Science and Industry and UChicago [~9 miles from the hotel]",
+    images: [hydePark1, hydePark2, hydePark3],
     activities: [
       "See the tiny replica model of a train traveling from Chicago to Seattle in the Museum of Science and Industry, along with other marvels related to transportation, atmospheric phenomena, and more.",
       "Then, take a walk around the Garden of the Phoenix, a Japanese garden located within Jackson Park.",
@@ -175,6 +194,13 @@ function ThingsToDoPage() {
               <ToggleIcon isOpen={openSections.includes(index)}>+</ToggleIcon>
             </SectionHeader>
             <SectionContent isOpen={openSections.includes(index)}>
+              {neighborhood.images && (
+                <ImageGrid>
+                  {neighborhood.images.map((img, iIndex) => (
+                    <ImageItem key={iIndex} src={img} alt={`${neighborhood.name} ${iIndex + 1}`} />
+                  ))}
+                </ImageGrid>
+              )}
               {neighborhood.activities && (
                 <ContentBlock>
                   <ContentList>

@@ -21,7 +21,7 @@ function FAQPage() {
           We recommend semi-formal or "garden party chic" attire. Please keep in mind that the greenhouse can be warm, so feel free to dress comfortably and forgo a suit jacket. We may also have a brief outdoor ceremony (weather permitting). We want you to wear whatever makes you comfortable, but if you want outfit ideas, we suggest the following:
           <ul>
             <li>A light-colored dress shirt and slacks, tie and suit jacket optional.</li>
-            <li>A dress or jumpsuit—think pastels or florals, if you have them.</li>
+            <li>A dress (any length is fine) or jumpsuit—think pastels or florals, if you have them.</li>
           </ul>
         </>
       )
@@ -36,7 +36,7 @@ function FAQPage() {
     },
     {
       question: "What is the RSVP deadline?",
-      answer: "Please get back to us by April 12, 2026."
+      answer: "Please get back to us by April 5, 2026."
     },
     {
       question: "Are young children invited?",
