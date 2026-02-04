@@ -40,9 +40,9 @@ const neighborhoodData = [
     subtitle: "shopping, lakefront, Navy Pier [<1 mile from the hotel]",
     images: [magMile1],
     activities: [
-      "Shop on the Magnificent Mile.",
-      "Walk, run, or bike along Chicago's sublime lakefront trail.",
-      "Check out Navy Pier, a touristy spot where you can enjoy the lake, ride a giant Ferris wheel, and sometimes see shows. The Chicago Children's Museum is located here."
+      <>Shop on the <strong>Magnificent Mile</strong>.</>,
+      <>Walk, run, or bike along Chicago's sublime <strong>lakefront trail</strong>.</>,
+      <>Check out <strong>Navy Pier</strong>, a touristy spot where you can enjoy the lake, ride a giant Ferris wheel, and sometimes see shows. The <strong>Chicago Children's Museum</strong> is located here.</>
     ],
     food: [
       { name: "Giordano's [$$]", desc: "Try deep dish pizza at the chain where we bring our out-of-town guests." },
@@ -56,9 +56,9 @@ const neighborhoodData = [
     subtitle: "The Bean, rock climbing, art museum [~1 mile from the hotel]",
     images: [theLoop1],
     activities: [
-      "Visit Cloud Gate, aka “the Bean” in Millennium Park.",
-      "Visit the Art Institute of Chicago and view works like A Sunday on La Grande Jatte and American Gothic. If you can, try to see Paradise Lost by Raqib Shaw, an epic 100-foot-long work, and let us know what you think!",
-      "Boulder at First Ascent Block 37, Eli's climbing gym."
+      <>Visit Cloud Gate, aka “<strong>the Bean</strong>” in Millennium Park.</>,
+      <>Visit the <strong>Art Institute of Chicago</strong> and view works like A Sunday on La Grande Jatte and American Gothic. If you can, try to see Paradise Lost by Raqib Shaw, an epic 100-foot-long work, and let us know what you think!</>,
+      <>Boulder at <strong>First Ascent Block 37</strong>, Eli's favorite climbing gym. Eli climbs here 3 times a week :D</>
     ]
   },
   {
@@ -66,7 +66,7 @@ const neighborhoodData = [
     subtitle: "Riverwalk and doughnuts [~1 mile from the hotel]",
     images: [riverNorth1],
     activities: [
-      "Enjoy views along the Chicago Riverwalk. Then try the almond old-fashioned doughnuts at Doughnut Vault [$]. Arrive early (before 10 am) so you get there before the doughnuts sell out."
+      <>Enjoy views along the <strong>Chicago Riverwalk</strong>. Then try the almond old-fashioned doughnuts at <strong>Doughnut Vault</strong> [$]. Arrive early (before 10 am) so you get there before the doughnuts sell out.</>
     ]
   },
   {
@@ -74,7 +74,7 @@ const neighborhoodData = [
     subtitle: "gourmet restaurants and interesting stores [~2 miles from the hotel]",
     images: [westLoop1],
     activities: [
-      "Explore the neighborhood where we've lived for the past year and a half. Enjoy the storefronts along Randolph Street, and if you can keep walking, you can visit the Patagonia store, which has an area dedicated to selling lightly used clothing."
+      <>Explore the neighborhood where we've lived for the past year and a half. Enjoy the storefronts along <strong>Randolph Street</strong>, and if you can keep walking, you can visit the <strong>Patagonia store</strong>, which has an area dedicated to selling lightly used clothing.</>
     ],
     food: [
       { name: "Aba [$$$]", desc: "One of our favorite spots for bringing guests. Delicious Mediterranean food served in a beautiful space with a great rooftop. Make a reservation in advance!" },
@@ -87,21 +87,21 @@ const neighborhoodData = [
     subtitle: "free zoo and a peaceful neighborhood [~2 miles from the hotel]",
     images: [lincolnPark1],
     activities: [
-      "Visit the red pandas and other animals at the free Lincoln Park Zoo, then take a tranquil walk around Lincoln Park (the park and the neighborhood)."
+      <>Visit the red pandas and other animals at the free <strong>Lincoln Park Zoo</strong>, then take a tranquil walk around <strong>Lincoln Park</strong> (the park and the neighborhood).</>
     ]
   },
   {
     name: "South Loop",
     subtitle: "Bruno Mars, aquarium, natural history museum, and escape rooms [~3 miles from the hotel]",
     activities: [
-      "If you can somehow get tickets, Bruno Mars is performing at Soldier Field on May 16. While in the area, check out the Shedd Aquarium or Field Museum, or try out our favorite escape rooms at Fox in a Box."
+      <>If you can somehow get tickets, Bruno Mars is performing at <strong>Soldier Field</strong> on May 16. While in the area, check out the <strong>Shedd Aquarium</strong> or <strong>Field Museum</strong>, or try out our favorite escape rooms at <strong>Fox in a Box</strong>.</>
     ]
   },
   {
     name: "West Town",
     subtitle: "vintage stores and some of our favorite food [~3 miles from the hotel]",
     activities: [
-      "Walk around this neighborhood and pop into fun stores like The Happy Hour Shop and The Center for Order and Experimentation. If you want to visit the famed Kasama for breakfast, we recommend ordering online so that you can avoid standing in line for hours (literally)."
+      <>Walk around this neighborhood and pop into fun stores like <strong>The Happy Hour Shop</strong> and <strong>The Center for Order and Experimentation</strong>. If you want to visit the famed <strong>Kasama</strong> for breakfast, we recommend ordering online so that you can avoid standing in line for hours (literally).</>
     ],
     food: [
       { name: "Gangnam Market [$-$$]", desc: "Standing under the cheerful neon signs and shopping the perfectly curated aisles at this Asian grocery store always makes us happy. There's a large food court with options like ramen and bakery items (including Portuguese egg tarts)." },
@@ -119,14 +119,14 @@ const neighborhoodData = [
       { name: "Dim sum restaurants", desc: "All the dim sum restaurants (Minghin, Triple Crown, Phoenix, etc.) are solid options." }
     ],
     activities: [
-      "Take a post-meal walk in Ping Tom Park, which has a great view of the city. The Chinatown Branch of the Chicago Public Library is also nice."
+      <>Take a post-meal walk in <strong>Ping Tom Park</strong>, which has a great view of the city. The <strong>Chinatown Branch of the Chicago Public Library</strong> is also nice.</>
     ]
   },
   {
     name: "Pilsen",
     subtitle: "Mexican art museum and delicious food [~5 miles from the hotel]",
     activities: [
-      "Visit the beautiful space and thought-provoking exhibits at the National Museum of Mexican Art."
+      <>Visit the beautiful space and thought-provoking exhibits at the <strong>National Museum of Mexican Art</strong>.</>
     ],
     food: [
       { name: "La Esperanza [$$]", desc: "The pozole verde available on weekends is delicious and a huge portion!" },
@@ -137,7 +137,7 @@ const neighborhoodData = [
     name: "Wicker Park",
     subtitle: "thrift stores in a fun area [~4 miles from the hotel]",
     activities: [
-      "You could spend the whole day thrifting here, at stores like Happy Belated Clothing (where used clothing from Japan is sold by the pound), Crossroads Trading, and Kokorokoko. Wicker Park (the park itself) is very pleasant on a sunny day, as is a stroll along The 606, an elevated urban trail."
+      <>You could spend the whole day thrifting here, at stores like <strong>Happy Belated Clothing</strong> (where used clothing from Japan is sold by the pound), <strong>Crossroads Trading</strong>, and <strong>Kokorokoko</strong>. <strong>Wicker Park</strong> (the park itself) is very pleasant on a sunny day, as is a stroll along <strong>The 606</strong>, an elevated urban trail.</>
     ]
   },
   {
@@ -145,9 +145,9 @@ const neighborhoodData = [
     subtitle: "Museum of Science and Industry and UChicago [~9 miles from the hotel]",
     images: [hydePark1, hydePark2, hydePark3],
     activities: [
-      "See the tiny replica model of a train traveling from Chicago to Seattle in the Museum of Science and Industry, along with other marvels related to transportation, atmospheric phenomena, and more.",
-      "Then, take a walk around the Garden of the Phoenix, a Japanese garden located within Jackson Park.",
-      "Visit the picturesque campus of the University of Chicago."
+      <>See the tiny replica model of a train traveling from Chicago to Seattle in the <strong>Museum of Science and Industry</strong>, along with other marvels related to transportation, atmospheric phenomena, and more.</>,
+      <>Then, take a walk around the <strong>Garden of the Phoenix</strong>, a Japanese garden located within <strong>Jackson Park</strong>.</>,
+      <>Visit the picturesque campus of the <strong>University of Chicago</strong>.</>
     ],
     food: [
       { name: "Virtue [$$$]", desc: "An acclaimed restaurant owned by Chef Erick Williams, Virtue describes itself as “a Southern American restaurant that leads with a culture of hospitality & kindness.” Nearby is the spot where Barack and Michelle Obama shared their first kiss outside a Baskin-Robbins." },
@@ -203,7 +203,7 @@ function ThingsToDoPage() {
               )}
               {neighborhood.activities && (
                 <ContentBlock>
-                  <ContentList>
+                  <ContentList $isBulleted={neighborhood.activities.length > 1}>
                     {neighborhood.activities.map((activity, aIndex) => (
                       <ContentItem key={aIndex}>{activity}</ContentItem>
                     ))}

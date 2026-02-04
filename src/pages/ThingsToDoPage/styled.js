@@ -132,8 +132,8 @@ export const ContentBlock = styled.div`
 `
 
 export const ContentList = styled.ul`
-    list-style: none;
-    padding: 0;
+    list-style: ${props => props.$isBulleted ? 'disc' : 'none'};
+    padding: ${props => props.$isBulleted ? '0 0 0 20px' : '0'};
     margin: 0;
 `
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { backgroundPageColor, accentColor, accentColorLighter, accentColorOffWhite, mobileBreakpoint, textColorDark } from '../../constants'
+import { backgroundPageColor, accentColor, accentColorBlue, accentColorLighter, accentColorTitle, mobileBreakpoint, textColorDark } from '../../constants'
 
 export const Title = styled.h1`
     color: ${accentColor};
@@ -130,7 +130,7 @@ export const HamburgerButton = styled.div`
     div {
         width: 30px;
         height: 3px;
-        background: #333;
+        background: ${({ open }) => open ? backgroundPageColor : accentColorBlue};
         border-radius: 10px;
         transition: all 0.3s linear;
         position: relative;
@@ -160,7 +160,7 @@ export const MobileMenuContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: ${accentColorOffWhite};
+    background: ${accentColorTitle};
     height: 100vh;
     width: 100%;
     text-align: center;
@@ -168,8 +168,9 @@ export const MobileMenuContainer = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    transition: transform 0.3s ease-in-out;
-    transform: ${({ open }) => open ? 'translateY(0)' : 'translateY(-100%)'};
+    transition: clip-path 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    clip-path: ${({ open }) => open ? 'inset(0 0 0 0)' : 'inset(0 0 100% 0)'};
+    pointer-events: ${({ open }) => open ? 'auto' : 'none'};
     z-index: 5;
 
     @media (min-width: ${mobileBreakpoint}) {
@@ -181,6 +182,11 @@ export const MobileNavItem = styled(NavItem)`
     font-size: 2rem;
     margin: 20px 0;
     list-style-type: none;
+    color: ${backgroundPageColor};
+    
+    &:hover {
+        color: white;
+    }
     
     &:before {
         display: none;

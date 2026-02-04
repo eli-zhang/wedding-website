@@ -118,7 +118,7 @@ function HomePage() {
           </DetailColumn>
           <DetailColumn>
             <DetailLabel>Time</DetailLabel>
-            <DetailValue>5:30 PM</DetailValue>
+            <DetailValue>5:00 PM</DetailValue>
           </DetailColumn>
           <DetailColumn>
             <DetailLabel>Location</DetailLabel>

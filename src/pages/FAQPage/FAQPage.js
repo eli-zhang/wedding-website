@@ -44,16 +44,20 @@ function FAQPage() {
       answer: "Please get back to us by April 5, 2026."
     },
     {
+      question: "Will there be a rehearsal dinner?",
+      answer: "We might have an informal rehearsal dinner the night before the wedding. Check back for more details!"
+    },
+    {
       question: "Are young children invited?",
       answer: "Yes, please feel free to bring your child if that works best for your family. We love kids and since one of us is a future pediatrician, it would feel only right to have kids at our wedding!"
     },
     {
       question: "Can I bring a plus one?",
-      answer: "Plus ones will be indicated on your invitation email as space is unfortunately limited. Thank you very much for your understanding!"
+      answer: "Plus ones will be indicated on your invitation envelope (and when you RSVP) as space is unfortunately limited. Thank you very much for your understanding!"
     },
     {
       question: "Is there a registry?",
-      answer: "Your presence at our wedding and in our life is already the best gift we can imagine, and we know that many of you will have traveled a long distance to get to Chicago or are still students. We may be creating a registry or honeymoon fund in the future."
+      answer: "Your presence at our wedding and in our life is already the best gift we can imagine, and we know that many of you will have traveled a long distance to get to Chicago or are still students. However, if you do want to give a gift, we appreciate it and we are working on setting up a registry and/or honeymoon fund."
     },
     {
       question: "Can I arrive early to the wedding?",
@@ -62,6 +66,10 @@ function FAQPage() {
     {
       question: "What food will be served? What if I have dietary restrictions?",
       answer: "We will most likely serve Indian food provided by Mantra Catering. Going out to Indian restaurants has always been one of our favorite date night activities. When you RSVP, please indicate any dietary restrictions. We will do our best to accommodate them and will be in touch with you if we have questions."
+    },
+    {
+      question: "What is the schedule for the wedding day?",
+      answer: "Aside from starting between 5 pm and 5:30 pm, the schedule is TBD! Please check back for more details."
     }
   ];
 
