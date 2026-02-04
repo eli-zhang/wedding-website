@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { accentColor, accentColorBlue, accentColorLighter, mobileBreakpoint } from "../../constants";
+import { accentColor, accentColorBlue, mobileBreakpoint } from "../../constants";
 
 export const RSVPContainer = styled.div`
     max-width: 1200px;

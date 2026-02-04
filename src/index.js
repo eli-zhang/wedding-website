@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {
-  Routes, Route, HashRouter,
+  Routes, Route,
   BrowserRouter
 } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';

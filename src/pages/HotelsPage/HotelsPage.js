@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
-import hotelDoodle from '../../images/hotel_doodle.png';
 import hotelImage from '../../images/hotel.jpg';
 import {
     PageContainer,

@@ -1,18 +1,14 @@
 
 import { useState, useEffect, useRef } from 'react';
 import {
-  BackgroundHeaderContainer, HeaderBackgroundRect, LargeHomeImage, BlueberryImageContainer, BlueberryImage, WelcomeMessageSection, WelcomeMessage,
-  TaglineContainer, TaglineText, TaglineSubtitle, TaglineSubtitleDate, TaglineSubtitleLocation, TaglineSubtitleContainer, TaglineButtonContainer,
-  TaglineDateLeft, TaglineDateCenter, TaglineDateRight,
+  BackgroundHeaderContainer, LargeHomeImage, BlueberryImageContainer, BlueberryImage, WelcomeMessageSection, WelcomeMessage,
+  TaglineContainer, TaglineText, TaglineSubtitle, TaglineSubtitleContainer, TaglineButtonContainer,
   SectionSpacer, RotatedSideTextLeft, RotatedSideTextRight, EmptyButton, RingDoodleIcon,
-  ContentSection, ContentSectionReversed, ContentTextContainer, ContentTitle, ContentBody, ContentImageContainer, ContentImage, ContentImageBackground, ContentImageBackgroundLeft,
-  ContentImageTravel, ContentImageSchedule, ContentImageThingsToDo, Ampersand,
-  SaveTheDateContainer, SaveTheDateHeader, SaveTheDateTitle, SaveTheDateSubtext, SaveTheDateDetails, DetailColumn, DetailLabel, DetailValue, DetailSubValue,
-  TopThingsList, TopThingsItem
+  Ampersand,
+  SaveTheDateContainer, SaveTheDateHeader, SaveTheDateTitle, SaveTheDateSubtext, SaveTheDateDetails, DetailColumn, DetailLabel, DetailValue, DetailSubValue
 } from './styled';
 import { Link } from "react-router-dom";
 import NavBar from '../../components/NavBar/NavBar'
-import FadeInWrapper from '../../components/FadeInWrapper/FadeInWrapper';
 import ringDoodle from '../../images/ring_doodle.png';
 
 function HomePage() {

@@ -83,12 +83,13 @@ const TimelineItemComponent = ({ data, index }) => {
       }
     );
 
-    if (itemRef.current) {
-      observer.observe(itemRef.current);
+    const currentItem = itemRef.current;
+    if (currentItem) {
+      observer.observe(currentItem);
     }
 
     return () => {
-      if (itemRef.current) {
+      if (currentItem) {
         observer.disconnect();
       }
     };

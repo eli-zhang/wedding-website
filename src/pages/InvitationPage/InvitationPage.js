@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { PageContainer, InvitationGroup, EnvelopeBottom, EnvelopeTop, InvitationCard, CardInner, NavigationArrow, FadeOverlay } from './styled';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function InvitationPage() {
     const [openState, setOpenState] = useState('unopened'); // 'unopened', 'opening', 'opened'

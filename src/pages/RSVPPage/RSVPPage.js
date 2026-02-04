@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import {
-  RSVPContainer, StepContainer, QuestionTitle, FormTitle,
+  RSVPContainer, StepContainer, QuestionTitle,
   StyledInput, FormContainer, FormGroup, FormLabel,
   StyledSelect, SubmitButton, StyledTextArea, HelperText,
   ThankYouMessage, BackHomeButton, PasswordInputWrapper
