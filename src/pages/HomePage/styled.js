@@ -83,7 +83,7 @@ export const BackgroundHeaderContainer = styled.div`
     @media (max-width: ${mobileBreakpoint}) {
         flex-direction: column-reverse;
         height: auto;
-        padding: 40px 0px;
+        padding: 20px 0px 0px 0px;
         margin-top: 20px;
     }
 `
@@ -116,7 +116,7 @@ export const LargeHomeImage = styled.div`
         margin: 0;
         clip-path: none;
         animation: ${fadeIn} 1.8s ease-in forwards;
-        margin-top: 40vh;
+        margin-top: 30vh;
     }
 `
 
@@ -371,6 +371,10 @@ export const UtilitiesTaglineHighlight = styled.b`
 export const SectionSpacer = styled.div`
     width: 100%;
     height: 160px;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        height: 0;
+    }
 `
 
 export const ContentSection = styled.div`
