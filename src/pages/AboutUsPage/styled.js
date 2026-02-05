@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { accentColor, accentColorBlue, textColorDark } from '../../constants';
+import { accentColorBlue, textColorDark } from '../../constants';
 
 // Container for the entire timeline
 export const TimelineContainer = styled.div`

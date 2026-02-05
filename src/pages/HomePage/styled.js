@@ -3,10 +3,7 @@ import blueberryImage from '../../images/blueberry_other.jpg';
 import holdingHandsImage from '../../images/home_page_lower_image.jpg';
 import garfieldParkImage from '../../images/garfield_park.png';
 import trainImage from '../../images/train.jpg';
-import paperTexture from '../../images/paper_texture.jpg';
 import { accentColor, accentColorBlue, accentColorGreen, accentColorTitle, accentColorLighter, backgroundPageColor, mobileBreakpoint, textColorDark } from '../../constants';
-
-import ringDoodle from '../../images/ring_doodle.png';
 
 const fadeIn = keyframes`
     from {
@@ -588,17 +585,6 @@ export const RotatedSideTextRight = styled.div`
 
     @media (max-width: ${mobileBreakpoint}) {
         display: none;
-    }
-`
-
-const fadeInLeft = keyframes`
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
     }
 `
 
