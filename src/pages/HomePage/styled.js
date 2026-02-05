@@ -81,9 +81,9 @@ export const BackgroundHeaderContainer = styled.div`
     overflow: hidden;
 
     @media (max-width: ${mobileBreakpoint}) {
-        flex-direction: column;
+        flex-direction: column-reverse;
         height: auto;
-        padding: 40px 20px;
+        padding: 40px 0px;
         margin-top: 20px;
     }
 `
@@ -110,9 +110,13 @@ export const LargeHomeImage = styled.div`
     animation: ${props => props.$isLoaded ? swipeRight : 'none'} 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 
     @media (max-width: ${mobileBreakpoint}) {
+        flex: none;
         height: 400px;
         width: 100%;
         margin: 0;
+        clip-path: none;
+        animation: ${fadeIn} 1.8s ease-in forwards;
+        margin-top: 40vh;
     }
 `
 
@@ -154,6 +158,8 @@ export const WelcomeMessageSection = styled.div`
 
     @media (max-width: ${mobileBreakpoint}) {
         padding: 60px 0;
+        transform: none !important;
+        transition: opacity 1s ease-out;
     }
 `
 
@@ -603,6 +609,8 @@ export const SaveTheDateContainer = styled.div`
     @media (max-width: ${mobileBreakpoint}) {
         padding: 60px 20px;
         gap: 40px;
+        transform: none !important;
+        transition: opacity 1s ease-out;
     }
 `
 
