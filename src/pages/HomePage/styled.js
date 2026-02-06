@@ -373,7 +373,7 @@ export const SectionSpacer = styled.div`
     height: 160px;
 
     @media (max-width: ${mobileBreakpoint}) {
-        height: 0;
+        height: 120px;
     }
 `
 

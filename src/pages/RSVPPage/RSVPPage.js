@@ -4,7 +4,8 @@ import {
   RSVPContainer, StepContainer, QuestionTitle,
   StyledInput, FormContainer, FormGroup, FormLabel,
   StyledSelect, SubmitButton, StyledTextArea, HelperText,
-  ThankYouMessage, BackHomeButton, PasswordInputWrapper
+  ThankYouMessage, BackHomeButton, PasswordInputWrapper,
+  LoadingOverlay, Spinner, InputWrapper
 } from './styled';
 import { checkRSVP, updateRSVP } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
@@ -126,19 +127,27 @@ function RSVPPage() {
     <>
       <NavBar tab={"RSVP"} />
       <RSVPContainer>
+        {isLoading && step !== 1 && (
+          <LoadingOverlay>
+            <Spinner />
+          </LoadingOverlay>
+        )}
         {step === 1 && (
           <StepContainer>
             <QuestionTitle>What's your name?</QuestionTitle>
             <form onSubmit={handleCheckRSVP}>
-              <StyledInput
-                type="text"
-                placeholder="Enter your full name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                autoFocus
-                disabled={isLoading}
-                large
-              />
+              <InputWrapper>
+                <StyledInput
+                  type="text"
+                  placeholder="Enter your full name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  autoFocus
+                  disabled={isLoading}
+                  large
+                />
+                {isLoading && <Spinner small inline />}
+              </InputWrapper>
               {isPasswordRequired && (
                 <PasswordInputWrapper>
                   <StyledInput

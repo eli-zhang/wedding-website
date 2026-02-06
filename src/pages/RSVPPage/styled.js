@@ -207,3 +207,38 @@ export const PasswordInputWrapper = styled.div`
         }
     }
 `
+export const LoadingOverlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+`;
+
+export const Spinner = styled.div`
+    width: ${props => props.small ? '30px' : '50px'};
+    height: ${props => props.small ? '30px' : '50px'};
+    border: ${props => props.small ? '3px' : '5px'} solid #f3f3f3;
+    border-top: ${props => props.small ? '3px' : '5px'} solid ${accentColor};
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: ${props => props.inline ? 'inline-block' : 'block'};
+    margin-left: ${props => props.inline ? '20px' : '0'};
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+`;
+
+export const InputWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+`;
