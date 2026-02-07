@@ -92,9 +92,9 @@ const neighborhoodData = [
   },
   {
     name: "South Loop",
-    subtitle: "Bruno Mars, aquarium, natural history museum, and escape rooms [~3 miles from the hotel]",
+    subtitle: "Bruno Mars concert, aquarium, natural history museum, and escape rooms [~3 miles from the hotel]",
     activities: [
-      <>If you can somehow get tickets, Bruno Mars is performing at <strong>Soldier Field</strong> on May 16. While in the area, check out the <strong>Shedd Aquarium</strong> or <strong>Field Museum</strong>, or try out our favorite escape rooms at <strong>Fox in a Box</strong>.</>
+      <>If you can somehow get tickets, <strong>Bruno Mars</strong> is performing at Soldier Field on May 16. While in the area, check out the <strong>Shedd Aquarium</strong> or <strong>Field Museum</strong>, or try out our favorite escape rooms at <strong>Fox in a Box</strong>.</>
     ]
   },
   {
@@ -126,7 +126,7 @@ const neighborhoodData = [
     name: "Pilsen",
     subtitle: "Mexican art museum and delicious food [~5 miles from the hotel]",
     activities: [
-      <>Visit the beautiful space and thought-provoking exhibits at the <strong>National Museum of Mexican Art</strong>.</>
+      <>Visit the beautiful space and exhibits at the <strong>National Museum of Mexican Art</strong>.</>
     ],
     food: [
       { name: "La Esperanza [$$]", desc: "The pozole verde available on weekends is delicious and a huge portion!" },
@@ -146,7 +146,7 @@ const neighborhoodData = [
     images: [hydePark1, hydePark2, hydePark3],
     activities: [
       <>See the tiny replica model of a train traveling from Chicago to Seattle in the <strong>Museum of Science and Industry</strong>, along with other marvels related to transportation, atmospheric phenomena, and more.</>,
-      <>Then, take a walk around the <strong>Garden of the Phoenix</strong>, a Japanese garden located within <strong>Jackson Park</strong>.</>,
+      <>Then, take a walk around the <strong>Garden of the Phoenix</strong>, a nearby Japanese garden.</>,
       <>Visit the picturesque campus of the <strong>University of Chicago</strong>.</>
     ],
     food: [

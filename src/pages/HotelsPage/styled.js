@@ -145,6 +145,41 @@ export const ContentItem = styled.li`
     }
 `
 
+export const HotelTable = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 30px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+`
+
+export const TableRow = styled.div`
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 20px 0;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+`
+
+export const TableLabel = styled.div`
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    color: ${textColorDark};
+    font-family: 'Gabarito', sans-serif;
+`
+
+export const TableContent = styled.div`
+    font-size: 1.1rem;
+    line-height: 1.6;
+`
+
 export const BookButton = styled.a`
     display: inline-block;
     background-color: ${accentColor};

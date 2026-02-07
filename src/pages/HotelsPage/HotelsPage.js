@@ -14,8 +14,10 @@ import {
     AddressInfo,
     ContentBlock,
     ContentHeader,
-    ContentList,
-    ContentItem,
+    HotelTable,
+    TableRow,
+    TableLabel,
+    TableContent,
     BookButton,
     ContactText,
     HotelImageContainer,
@@ -63,46 +65,48 @@ function HotelsPage() {
                         Chicago, Illinois 60611
                     </AddressInfo>
 
-                    <ContentBlock>
-                        <ContentHeader>Check in</ContentHeader>
-                        <ContentList>
-                            <ContentItem>Saturday, May 16 at 4 pm</ContentItem>
-                            <ContentItem>OR</ContentItem>
-                            <ContentItem>Sunday, May 17 at 4 pm</ContentItem>
-                        </ContentList>
-                    </ContentBlock>
+                    <HotelTable>
+                        <TableRow>
+                            <TableLabel>Check in</TableLabel>
+                            <TableContent>
+                                Saturday, May 16 at 4 pm<br />
+                                <i>or</i><br />
+                                Sunday, May 17 at 4 pm
+                            </TableContent>
+                        </TableRow>
 
-                    <ContentBlock>
-                        <ContentHeader>Check out</ContentHeader>
-                        <ContentList>
-                            <ContentItem>Monday, May 18 at 11 am</ContentItem>
-                        </ContentList>
-                    </ContentBlock>
+                        <TableRow>
+                            <TableLabel>Check out</TableLabel>
+                            <TableContent>
+                                Monday, May 18 at 11 am
+                            </TableContent>
+                        </TableRow>
 
-                    <ContentBlock>
-                        <ContentHeader>Discounted rates</ContentHeader>
-                        <ContentList>
-                            <ContentItem>1 king bed - $229/night</ContentItem>
-                            <ContentItem>2 queen beds - $229/night</ContentItem>
-                        </ContentList>
-                    </ContentBlock>
+                        <TableRow>
+                            <TableLabel>Discounted rates</TableLabel>
+                            <TableContent>
+                                1 king bed - $229/night<br />
+                                2 queen beds - $229/night
+                            </TableContent>
+                        </TableRow>
 
-                    <ContentBlock>
-                        <ContentHeader>Last day to reserve</ContentHeader>
-                        <ContentList>
-                            <ContentItem>April 16, 2026</ContentItem>
-                        </ContentList>
-                    </ContentBlock>
+                        <TableRow>
+                            <TableLabel>Last day to reserve</TableLabel>
+                            <TableContent>
+                                April 16, 2026
+                            </TableContent>
+                        </TableRow>
 
-                    <ContentBlock>
-                        <ContentHeader>Amenities</ContentHeader>
-                        <ContentList>
-                            <ContentItem>Free hot breakfast</ContentItem>
-                            <ContentItem>Fitness center</ContentItem>
-                            <ContentItem>Cribs available</ContentItem>
-                            <ContentItem>Parking (valet only) for $72/night. SpotHero is another option for finding parking downtown.</ContentItem>
-                        </ContentList>
-                    </ContentBlock>
+                        <TableRow>
+                            <TableLabel>Amenities</TableLabel>
+                            <TableContent>
+                                Free hot breakfast<br />
+                                Fitness center<br />
+                                Cribs available<br />
+                                Parking (valet only) for $72/night. SpotHero is another option for finding parking downtown.
+                            </TableContent>
+                        </TableRow>
+                    </HotelTable>
 
                     <BookButton
                         href="https://www.hilton.com/en/book/reservation/deeplink/?ctyhocn=CHIDMHX&groupCode=CHHFEM&arrivaldate=2026-05-16&departuredate=2026-05-18&cid=OM,WW,HILTONLINK,EN,DirectLink&fromId=HILTONLINKDIRECT"
@@ -124,7 +128,7 @@ function HotelsPage() {
 
                         <ContentBlock>
                             <AddressInfo style={{ marginBottom: '20px' }}>
-                                If you are interested in finding accommodations on your own: Rather than staying in the immediate vicinity of Garfield Park Conservatory, we recommend the following neighborhoods if you’re unfamiliar with Chicago to prioritize safety and proximity to “downtown” tourist attractions:
+                                If you are interested in finding accommodations on your own: Rather than staying in the immediate vicinity of Garfield Park Conservatory, we recommend the following neighborhoods to prioritize safety and proximity to “downtown” tourist attractions:
                             </AddressInfo>
                             <NeighborhoodList>
                                 <NeighborhoodItem>
