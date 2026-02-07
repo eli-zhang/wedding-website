@@ -19,9 +19,9 @@ function FAQPage() {
       question: "What is the dress code?",
       answer: (
         <>
-          We recommend semi-formal or "garden party chic" attire. Please keep in mind that the greenhouse can be warm, so feel free to dress comfortably and forgo a suit jacket. We may also have a brief outdoor ceremony (weather permitting). We want you to wear whatever makes you comfortable, but if you want outfit ideas, we suggest the following:
+          We recommend cocktail or "garden party chic" attire. The greenhouse can be warm, but we may also have an outdoor cocktail hour and Chicago weather can be unpredictable in May. We want you to wear whatever makes you comfortable, but if you want outfit ideas, we suggest the following:
           <ul>
-            <li>A light-colored dress shirt and slacks, tie and suit jacket optional.</li>
+            <li>A light-colored dress shirt, slacks, and a blazer.</li>
             <li>A dress (any length is fine) or jumpsuit—think pastels or florals, if you have them.</li>
           </ul>
         </>
@@ -29,7 +29,7 @@ function FAQPage() {
     },
     {
       question: "Will the wedding be indoors or outdoors?",
-      answer: "TBD—but depending on weather, we may have an outdoor ceremony followed by an indoor reception."
+      answer: "TBD—but depending on weather, we may have an outdoor cocktail hour followed by an indoor reception."
     },
     {
       question: "How can I get to and from the venue? Is parking available?",
@@ -41,7 +41,7 @@ function FAQPage() {
     },
     {
       question: "What is the RSVP deadline?",
-      answer: "Please get back to us by April 5, 2026."
+      answer: "Please get back to us by April 5!"
     },
     {
       question: "Will there be a rehearsal dinner?",
@@ -61,11 +61,11 @@ function FAQPage() {
     },
     {
       question: "Can I arrive early to the wedding?",
-      answer: "We recommend arriving after 5 pm but before the ceremony start time of 5:30. If you need to arrive earlier, the conservatory will be open to the general public. If you arrive prior to 5 pm, there is a $10 admission fee for non-Chicago residents. Of course there is no fee for wedding guests after 5 pm."
+      answer: "We recommend arriving after 5 pm but before the ceremony start time of 5:30. If you need to arrive earlier, the conservatory will be open to the general public. If you arrive prior to 5 pm, there is a $10 admission fee for non-Chicago residents. You won't have to pay anything if you arrive after 5 pm!"
     },
     {
-      question: "What food will be served? What if I have dietary restrictions?",
-      answer: "We will most likely serve Indian food provided by Mantra Catering. Going out to Indian restaurants has always been one of our favorite date night activities. When you RSVP, please indicate any dietary restrictions. We will do our best to accommodate them and will be in touch with you if we have questions."
+      question: "What food will be served at the reception? What if I have dietary restrictions?",
+      answer: "We'll be serving Indian food provided by Mantra Catering. When you RSVP, please indicate any dietary restrictions. We will do our best to accommodate them and will be in touch with you if we have questions."
     },
     {
       question: "What is the schedule for the wedding day?",

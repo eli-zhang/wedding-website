@@ -158,18 +158,20 @@ export const RecommendationHeader = styled.h3`
 
 export const ImageGrid = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: ${props => props.$imageCount === 1 ? '1fr' : 'repeat(auto-fill, minmax(300px, 1fr))'};
+    max-width: ${props => props.$imageCount === 1 ? '850px' : 'none'};
     gap: 20px;
     margin-bottom: 20px;
 
     @media (max-width: 768px) {
         grid-template-columns: 1fr;
+        max-width: none;
     }
 `
 
 export const ImageItem = styled.img`
     width: 100%;
-    height: 250px;
+    height: ${props => props.$imageCount === 1 ? '450px' : '250px'};
     object-fit: cover;
     border-radius: 4px;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.1);

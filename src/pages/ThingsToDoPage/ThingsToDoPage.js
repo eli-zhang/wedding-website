@@ -195,9 +195,14 @@ function ThingsToDoPage() {
             </SectionHeader>
             <SectionContent isOpen={openSections.includes(index)}>
               {neighborhood.images && (
-                <ImageGrid>
+                <ImageGrid $imageCount={neighborhood.images.length}>
                   {neighborhood.images.map((img, iIndex) => (
-                    <ImageItem key={iIndex} src={img} alt={`${neighborhood.name} ${iIndex + 1}`} />
+                    <ImageItem
+                      key={iIndex}
+                      src={img}
+                      alt={`${neighborhood.name} ${iIndex + 1}`}
+                      $imageCount={neighborhood.images.length}
+                    />
                   ))}
                 </ImageGrid>
               )}
