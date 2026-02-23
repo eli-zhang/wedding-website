@@ -45,6 +45,7 @@ export const PageContainer = styled.div`
     justify-content: center;
     align-items: center;
     cursor: ${props => props.$openState === 'unopened' ? 'pointer' : 'default'};
+    touch-action: none; /* Disable gestures like pinch-to-zoom and pan */
 
     &::before {
         content: "";
@@ -70,6 +71,11 @@ export const InvitationGroup = styled.div`
     align-items: center;
     transition: scale 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     z-index: 1;
+
+    @media (max-width: 768px) {
+        width: 90vw;
+        height: 60vh;
+    }
 
     &:hover {
         scale: ${props => props.$openState === 'unopened' ? 1.1 : 1};
@@ -107,7 +113,6 @@ export const CardInner = styled.div.attrs(props => ({
     }
 `;
 
-
 export const EnvelopeBottom = styled.div`
     position: absolute;
     width: 60vw;
@@ -135,8 +140,6 @@ export const EnvelopeTop = styled.div`
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), scale 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 `;
 
-
-
 export const NavigationArrow = styled.div`
     position: fixed;
     right: 100px;
@@ -154,6 +157,23 @@ export const NavigationArrow = styled.div`
     &:hover {
         transform: translateY(-50%) translateX(5px) scale(1.15);
         color: #000;
+    }
+
+    @media (max-width: 768px) {
+        right: 50%;
+        top: auto;
+        bottom: 20px;
+        transform: translateX(50%);
+        flex-direction: row;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 10px 20px;
+        border-radius: 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+
+        &:hover {
+            transform: translateX(50%) translateY(-5px) scale(1.05);
+        }
     }
 
     svg {
