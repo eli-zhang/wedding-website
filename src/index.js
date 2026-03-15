@@ -15,6 +15,7 @@ import HotelsPage from './pages/HotelsPage/HotelsPage';
 import TransportationPage from './pages/TransportationPage/TransportationPage';
 import FAQPage from './pages/FAQPage/FAQPage';
 import InvitationPage from './pages/InvitationPage/InvitationPage';
+import RegistryPage from './pages/RegistryPage/RegistryPage';
 import ScrollToTop from './utils/ScrollToTop/ScrollToTop';
 
 const root = ReactDOM.createRoot(
@@ -47,6 +48,9 @@ root.render(
       </Route>
       <Route path="/invitation" >
         <Route index={true} element={<InvitationPage />} />
+      </Route>
+      <Route path="/registry" >
+        <Route index={true} element={<RegistryPage />} />
       </Route>
       <Route path="*" element={<HomePage />} />
     </Routes>

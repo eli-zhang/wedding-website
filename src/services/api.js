@@ -34,3 +34,9 @@ export const updateRSVP = async (name, password = '', formData) => {
     const data = await response.json();
     return { status: response.status, data };
 };
+
+export const fetchRegistryItems = async () => {
+    const response = await fetch(`${API_BASE_URL}/wedding-registry`);
+    const data = await response.json();
+    return { status: response.status, data };
+};
