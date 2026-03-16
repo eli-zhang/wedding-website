@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import {
     PageContainer,
@@ -22,15 +23,16 @@ import {
     SkeletonText,
     CustomPriceBanner,
     BannerImageContainer,
-    BannerDetails
+    BannerDetails,
+    SuccessMessage
 } from './styled';
 import { fetchRegistryItems, createCheckoutSession } from '../../services/api';
-import bridgeImg from '../../images/bridge.jpg';
-import holdingHandsImg from '../../images/holding_hands.jpg';
-import trainImg from '../../images/train.jpg';
-import hotelImg from '../../images/hotel.jpg';
+import notFoundImage from '../../images/image_not_found.jpg';
 
 function RegistryPage() {
+    const location = useLocation();
+    const isSuccess = new URLSearchParams(location.search).get('success') === 'true';
+
     const [isLoading, setIsLoading] = React.useState(true);
     const [processingItemId, setProcessingItemId] = React.useState(null);
     const [registryItems, setRegistryItems] = React.useState([]);
@@ -43,7 +45,7 @@ function RegistryPage() {
                 if (mounted && data && data.length > 0) {
                     // If API returns successfully, replace items, falling back to local images if Stripe image is missing
                     const resolvedItems = data.map((apiItem, index) => {
-                        const fallbackImage = bridgeImg;
+                        const fallbackImage = notFoundImage;
                         return {
                             ...apiItem,
                             name: apiItem.name,
@@ -69,7 +71,7 @@ function RegistryPage() {
     const handleGiftClick = async (e, item) => {
         e.stopPropagation();
         if (!item.price_id || processingItemId !== null) return;
-        
+
         setProcessingItemId(item.id);
         const successUrl = `${window.location.origin}/registry?success=true`;
         const cancelUrl = `${window.location.origin}/registry?canceled=true`;
@@ -95,7 +97,7 @@ function RegistryPage() {
                             <PageTitle>Registry</PageTitle>
                         </TitleContainer>
                         <PageSubtitle>
-                            Your presence is the greatest gift of all. If you wish to celebrate with a gift, please browse our registry below.
+                            Your presence at our wedding and in our life is already the best gift we can imagine, and we know that many of you will have traveled a long distance to get to Chicago or are still students. However, if you do want to give a gift, we really appreciate your generosity and have listed some options below. <br /><br />Thank you for viewing our newlywed fund!  A few registry items are listed as well. We’ll purchase any gifted items after we move for residency. Feel free to make partial contributions towards a group gift if desired.
                         </PageSubtitle>
                     </HeaderTextContainer>
                 </HeaderContainer>
@@ -117,6 +119,10 @@ function RegistryPage() {
                             ))}
                         </RegistryGrid>
                     </>
+                ) : isSuccess ? (
+                    <SuccessMessage>
+                        Thank you so much for contributing to our registry! We're really grateful for your generosity and support.
+                    </SuccessMessage>
                 ) : (
                     <>
                         {customPriceItems.map(item => (
@@ -129,7 +135,7 @@ function RegistryPage() {
                                     <RegistryItemStore>{item.description}</RegistryItemStore>
                                     <RegistryItemPrice>{item.price}</RegistryItemPrice>
                                     {item.price_id && (
-                                        <GiftButton 
+                                        <GiftButton
                                             disabled={processingItemId !== null}
                                             onClick={(e) => handleGiftClick(e, item)}
                                         >
@@ -139,7 +145,7 @@ function RegistryPage() {
                                 </BannerDetails>
                             </CustomPriceBanner>
                         ))}
-                        
+
                         <RegistryGrid>
                             {regularItems.map(item => (
                                 <RegistryItem key={item.id} onClick={(e) => handleGiftClick(e, item)}>
@@ -151,7 +157,7 @@ function RegistryPage() {
                                         <RegistryItemStore>{item.description}</RegistryItemStore>
                                         <RegistryItemPrice>{item.price}</RegistryItemPrice>
                                         {item.price_id && (
-                                            <GiftButton 
+                                            <GiftButton
                                                 disabled={processingItemId !== null}
                                                 onClick={(e) => handleGiftClick(e, item)}
                                             >

@@ -252,3 +252,18 @@ export const GiftButton = styled.button`
         cursor: not-allowed;
     }
 `
+
+export const SuccessMessage = styled.div`
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 60px 0;
+    font-family: 'Jost', sans-serif;
+    color: ${accentColor};
+    font-weight: 500;
+    line-height: 1.6;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+`
