@@ -24,7 +24,13 @@ import {
     CustomPriceBanner,
     BannerImageContainer,
     BannerDetails,
-    SuccessMessage
+    SuccessMessage,
+    ControlsContainer,
+    SortContainer,
+    SortLabel,
+    SortSelect,
+    PaginationContainer,
+    PageButton
 } from './styled';
 import { fetchRegistryItems, createCheckoutSession } from '../../services/api';
 import notFoundImage from '../../images/image_not_found.jpg';
@@ -36,6 +42,9 @@ function RegistryPage() {
     const [isLoading, setIsLoading] = React.useState(true);
     const [processingItemId, setProcessingItemId] = React.useState(null);
     const [registryItems, setRegistryItems] = React.useState([]);
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const [sortOption, setSortOption] = React.useState('name');
+    const itemsPerPage = 8; // Match the skeleton count for consistency
 
     React.useEffect(() => {
         let mounted = true;
@@ -52,7 +61,8 @@ function RegistryPage() {
                             description: apiItem.description || "Registry Item",
                             image: apiItem.image || fallbackImage,
                             price: apiItem.price,
-                            price_id: apiItem.price_id
+                            price_id: apiItem.price_id,
+                            silliness: apiItem.silliness
                         };
                     });
 
@@ -84,8 +94,43 @@ function RegistryPage() {
         }
     };
 
+    const parsePrice = (priceStr) => {
+        if (!priceStr || priceStr === 'Custom price' || priceStr === 'Price unavailable') return 0;
+        return parseFloat(priceStr.replace(/[$,]/g, '')) || 0;
+    };
+
+    // Process registry items: filter out custom price items for grid, then sort
+    const allRegularItems = registryItems.filter(item => item.price !== 'Custom price');
     const customPriceItems = registryItems.filter(item => item.price === 'Custom price');
-    const regularItems = registryItems.filter(item => item.price !== 'Custom price');
+
+    const sortedItems = [...allRegularItems].sort((a, b) => {
+        switch (sortOption) {
+            case 'price_low':
+                return parsePrice(a.price) - parsePrice(b.price);
+            case 'price_high':
+                return parsePrice(b.price) - parsePrice(a.price);
+            case 'silliness':
+                return (b.silliness || 0) - (a.silliness || 0);
+            case 'name':
+            default:
+                return a.name.localeCompare(b.name);
+        }
+    });
+
+    // Pagination logic
+    const totalPages = Math.ceil(sortedItems.length / itemsPerPage);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = sortedItems.slice(indexOfFirstItem, indexOfLastItem);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const handleSortChange = (e) => {
+        setSortOption(e.target.value);
+        setCurrentPage(1); // Reset to first page on sort
+    };
 
     return (
         <>
@@ -146,8 +191,46 @@ function RegistryPage() {
                             </CustomPriceBanner>
                         ))}
 
+                        <ControlsContainer>
+                            <SortContainer>
+                                <SortLabel>Sort by:</SortLabel>
+                                <SortSelect value={sortOption} onChange={handleSortChange}>
+                                    <option value="name">Name (A-Z)</option>
+                                    <option value="price_low">Price: Low to High</option>
+                                    <option value="price_high">Price: High to Low</option>
+                                    <option value="silliness">Silliness</option>
+                                </SortSelect>
+                            </SortContainer>
+
+                            {totalPages > 1 && (
+                                <PaginationContainer>
+                                    <PageButton
+                                        disabled={currentPage === 1}
+                                        onClick={() => handlePageChange(currentPage - 1)}
+                                    >
+                                        &laquo; Prev
+                                    </PageButton>
+                                    {[...Array(totalPages)].map((_, i) => (
+                                        <PageButton
+                                            key={i + 1}
+                                            active={currentPage === i + 1}
+                                            onClick={() => handlePageChange(i + 1)}
+                                        >
+                                            {i + 1}
+                                        </PageButton>
+                                    ))}
+                                    <PageButton
+                                        disabled={currentPage === totalPages}
+                                        onClick={() => handlePageChange(currentPage + 1)}
+                                    >
+                                        Next &raquo;
+                                    </PageButton>
+                                </PaginationContainer>
+                            )}
+                        </ControlsContainer>
+
                         <RegistryGrid>
-                            {regularItems.map(item => (
+                            {currentItems.map(item => (
                                 <RegistryItem key={item.id} onClick={(e) => handleGiftClick(e, item)}>
                                     <RegistryImageContainer>
                                         <RegistryImage src={item.image} alt={item.name} />
@@ -168,6 +251,32 @@ function RegistryPage() {
                                 </RegistryItem>
                             ))}
                         </RegistryGrid>
+
+                        {totalPages > 1 && (
+                            <PaginationContainer>
+                                <PageButton
+                                    disabled={currentPage === 1}
+                                    onClick={() => handlePageChange(currentPage - 1)}
+                                >
+                                    &laquo; Prev
+                                </PageButton>
+                                {[...Array(totalPages)].map((_, i) => (
+                                    <PageButton
+                                        key={i + 1}
+                                        active={currentPage === i + 1}
+                                        onClick={() => handlePageChange(i + 1)}
+                                    >
+                                        {i + 1}
+                                    </PageButton>
+                                ))}
+                                <PageButton
+                                    disabled={currentPage === totalPages}
+                                    onClick={() => handlePageChange(currentPage + 1)}
+                                >
+                                    Next &raquo;
+                                </PageButton>
+                            </PaginationContainer>
+                        )}
                     </>
                 )}
             </PageContainer>

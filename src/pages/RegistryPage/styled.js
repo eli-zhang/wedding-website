@@ -267,3 +267,82 @@ export const SuccessMessage = styled.div`
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 `
+
+export const ControlsContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+`;
+
+export const SortContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+`;
+
+export const SortLabel = styled.span`
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: ${textColorDark};
+`;
+
+export const SortSelect = styled.select`
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    color: ${textColorDark};
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+
+    &:focus {
+        border-color: ${accentColor};
+    }
+`;
+
+export const PaginationContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+`;
+
+export const PageButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid ${props => props.active ? accentColor : 'rgba(0, 0, 0, 0.1)'};
+    background-color: ${props => props.active ? accentColor : 'white'};
+    color: ${props => props.active ? 'white' : textColorDark};
+    border-radius: 4px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: ${props => props.active ? '600' : '400'};
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+        border-color: ${accentColor};
+        color: ${props => props.active ? 'white' : accentColor};
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+`;
