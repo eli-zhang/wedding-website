@@ -11,7 +11,6 @@ const NavBar = ({ tab }) => {
             <NavItemsContainer>
                 <Link to="/about-us" style={{ textDecoration: 'none' }}><NavItem active={tab === "About us"}>About us</NavItem></Link>
                 <Link to="/hotels" style={{ textDecoration: 'none' }}><NavItem active={tab === "Hotels"}>Hotels</NavItem></Link>
-                <Link to="/transportation" style={{ textDecoration: 'none' }}><NavItem active={tab === "Transportation"}>Transportation</NavItem></Link>
                 <Link to="/registry" style={{ textDecoration: 'none' }}><NavItem active={tab === "Registry"}>Registry</NavItem></Link>
             </NavItemsContainer>
 
@@ -35,7 +34,6 @@ const NavBar = ({ tab }) => {
                 <Link to="/" style={{ textDecoration: 'none' }} onClick={() => setIsMobileMenuOpen(false)}><MobileNavItem active={tab === "Home"}>Home</MobileNavItem></Link>
                 <Link to="/about-us" style={{ textDecoration: 'none' }} onClick={() => setIsMobileMenuOpen(false)}><MobileNavItem active={tab === "About us"}>About us</MobileNavItem></Link>
                 <Link to="/hotels" style={{ textDecoration: 'none' }} onClick={() => setIsMobileMenuOpen(false)}><MobileNavItem active={tab === "Hotels"}>Hotels</MobileNavItem></Link>
-                <Link to="/transportation" style={{ textDecoration: 'none' }} onClick={() => setIsMobileMenuOpen(false)}><MobileNavItem active={tab === "Transportation"}>Transportation</MobileNavItem></Link>
                 <Link to="/registry" style={{ textDecoration: 'none' }} onClick={() => setIsMobileMenuOpen(false)}><MobileNavItem active={tab === "Registry"}>Registry</MobileNavItem></Link>
                 <Link to="/things-to-do" style={{ textDecoration: 'none' }} onClick={() => setIsMobileMenuOpen(false)}><MobileNavItem active={tab === "Things to do"}>Things to do</MobileNavItem></Link>
                 <Link to="/faq" style={{ textDecoration: 'none' }} onClick={() => setIsMobileMenuOpen(false)}><MobileNavItem active={tab === "FAQ"}>FAQ</MobileNavItem></Link>

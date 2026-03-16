@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import hotelImage from '../../images/hotel.jpg';
+import bridgeImage from '../../images/bridge.jpg';
 import {
     PageContainer,
     HeaderContainer,
@@ -25,17 +26,45 @@ import {
     OtherOptionsSection,
     NeighborhoodList,
     NeighborhoodItem,
-    NeighborhoodName
+    NeighborhoodName,
+    ContentSection,
+    ContentTextContainer,
+    ContentTitle,
+    ContentBody,
+    ContentSubsection,
+    ContentSubsectionTitle,
+    BridgeImageContainer,
+    BridgeImage
 } from './styled';
 
 function HotelsPage() {
     const [isImageLoaded, setIsImageLoaded] = useState(false);
+    const [isBridgeImageLoaded, setIsBridgeImageLoaded] = useState(false);
 
     useEffect(() => {
         const img = new Image();
         img.src = hotelImage;
         img.onload = () => setIsImageLoaded(true);
         if (img.complete) setIsImageLoaded(true);
+
+        const bridgeImg = new Image();
+        bridgeImg.src = bridgeImage;
+        bridgeImg.onload = () => setIsBridgeImageLoaded(true);
+        if (bridgeImg.complete) setIsBridgeImageLoaded(true);
+    }, []);
+
+    useEffect(() => {
+        const hash = window.location.hash;
+        if (hash) {
+            const id = hash.replace('#', '');
+            const element = document.getElementById(id);
+            if (element) {
+                // Use setTimeout to ensure the page is fully rendered before scrolling
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        }
     }, []);
 
     return (
@@ -155,6 +184,24 @@ function HotelsPage() {
                     </OtherOptionsSection>
                 </HotelSection>
             </PageContainer>
+            
+            <ContentSection id="transportation">
+                <ContentTextContainer>
+                    <ContentTitle>Transportation</ContentTitle>
+                    <ContentSubsection>
+                        <ContentSubsectionTitle>How to get to the venue</ContentSubsectionTitle>
+                        <ContentBody>
+                            Although Garfield Park Conservatory is accessible by the Green Line (part of Chicago's public transportation system), we do <b>not</b> recommend taking the Green Line late at night or when leaving the wedding. Instead, please plan to carpool or call an Uber/Lyft. We may have a transportation coordinator and/or Uber gift cards available to facilitate ride sharing.
+                        </ContentBody>
+                        <ContentBody>
+                            There is free parking available on-site. There will be a security guard present at the parking lot.
+                        </ContentBody>
+                    </ContentSubsection>
+                </ContentTextContainer>
+            </ContentSection>
+            <BridgeImageContainer>
+                <BridgeImage src={bridgeImage} $isLoaded={isBridgeImageLoaded} />
+            </BridgeImageContainer>
         </>
     );
 }

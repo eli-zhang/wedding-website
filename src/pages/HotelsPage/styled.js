@@ -262,3 +262,95 @@ export const HotelImage = styled.div`
     clip-path: inset(0 100% 0 0);
     animation: ${props => props.$isLoaded ? swipeRight : 'none'} 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 `
+
+export const ContentSection = styled.div`
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 60px;
+    max-width: 1040px;
+    margin: 0 auto;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        flex-direction: column;
+        padding: 60px 20px;
+        gap: 40px;
+    }
+`
+
+export const ContentTextContainer = styled.div`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+`
+
+export const ContentTitle = styled.h2`
+    color: ${accentColor};
+    font-size: 3rem;
+    font-family: 'Gabarito', sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        font-size: 2rem;
+    }
+`
+
+export const ContentBody = styled.p`
+    color: ${textColorDark};
+    font-size: 1.1rem;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+`
+
+export const ContentSubsection = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+    
+    &:first-of-type {
+        margin-top: 0;
+    }
+`
+
+export const ContentSubsectionTitle = styled.h3`
+    color: ${accentColor};
+    font-size: 1.5rem;
+    font-family: 'Gabarito', sans-serif;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0;
+`
+
+export const BridgeImageContainer = styled.div`
+    width: 100%;
+    max-width: 1040px;
+    height: 500px;
+    margin: 40px auto 80px;
+    overflow: hidden;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        height: 300px;
+        margin: 20px auto 40px;
+        width: auto;
+    }
+`
+
+export const BridgeImage = styled.div`
+    width: 100%;
+    height: 100%;
+    background-image: url(${props => props.src});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    will-change: clip-path;
+    clip-path: inset(0 100% 0 0);
+    animation: ${props => props.$isLoaded ? swipeRight : 'none'} 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+`

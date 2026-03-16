@@ -15,7 +15,14 @@ import {
     RegistryItemTitle,
     RegistryItemStore,
     RegistryItemPrice,
-    GiftButton
+    GiftButton,
+    LoadingMessage,
+    SkeletonItem,
+    SkeletonImage,
+    SkeletonText,
+    CustomPriceBanner,
+    BannerImageContainer,
+    BannerDetails
 } from './styled';
 import { fetchRegistryItems, createCheckoutSession } from '../../services/api';
 import bridgeImg from '../../images/bridge.jpg';
@@ -24,17 +31,9 @@ import trainImg from '../../images/train.jpg';
 import hotelImg from '../../images/hotel.jpg';
 
 function RegistryPage() {
-    const [isProcessing, setIsProcessing] = React.useState(false);
-    const [registryItems, setRegistryItems] = React.useState([
-        {
-            id: 'placeholder-1',
-            name: "Placeholder gift",
-            description: "Placeholder description",
-            price: "$100.00",
-            price_id: null,
-            image: bridgeImg
-        },
-    ]);
+    const [isLoading, setIsLoading] = React.useState(true);
+    const [processingItemId, setProcessingItemId] = React.useState(null);
+    const [registryItems, setRegistryItems] = React.useState([]);
 
     React.useEffect(() => {
         let mounted = true;
@@ -58,11 +57,33 @@ function RegistryPage() {
                     setRegistryItems(resolvedItems);
                 }
             }
+            if (mounted) {
+                setIsLoading(false);
+            }
         };
 
         loadItems();
         return () => { mounted = false; };
     }, []);
+
+    const handleGiftClick = async (e, item) => {
+        e.stopPropagation();
+        if (!item.price_id || processingItemId !== null) return;
+        
+        setProcessingItemId(item.id);
+        const successUrl = `${window.location.origin}/registry?success=true`;
+        const cancelUrl = `${window.location.origin}/registry?canceled=true`;
+        const url = await createCheckoutSession(item.price_id, successUrl, cancelUrl);
+        if (url) {
+            window.location.href = url;
+        } else {
+            alert("Unable to initiate checkout. Please try again later.");
+            setProcessingItemId(null);
+        }
+    };
+
+    const customPriceItems = registryItems.filter(item => item.price === 'Custom price');
+    const regularItems = registryItems.filter(item => item.price !== 'Custom price');
 
     return (
         <>
@@ -79,43 +100,70 @@ function RegistryPage() {
                     </HeaderTextContainer>
                 </HeaderContainer>
 
-                <RegistryGrid>
-                    {registryItems.map(item => (
-                        <RegistryItem key={item.id} onClick={(e) => {
-                            // If user clicks the wrapping item but the item handles it inside the button...
-                            // it's fine, we will just delegate it via the explicit button below to keep it organized
-                        }}>
-                            <RegistryImageContainer>
-                                <RegistryImage src={item.image} alt={item.name} />
-                            </RegistryImageContainer>
-                            <RegistryItemDetails>
-                                <RegistryItemTitle>{item.name}</RegistryItemTitle>
-                                <RegistryItemStore>{item.description}</RegistryItemStore>
-                                <RegistryItemPrice>{item.price}</RegistryItemPrice>
-                                {item.price_id && (
-                                    <GiftButton
-                                        disabled={isProcessing}
-                                        onClick={async (e) => {
-                                            e.stopPropagation();
-                                            setIsProcessing(true);
-                                            const successUrl = `${window.location.origin}/registry?success=true`;
-                                            const cancelUrl = `${window.location.origin}/registry?canceled=true`;
-                                            const url = await createCheckoutSession(item.price_id, successUrl, cancelUrl);
-                                            if (url) {
-                                                window.location.href = url;
-                                            } else {
-                                                alert("Unable to initiate checkout. Please try again later.");
-                                                setIsProcessing(false);
-                                            }
-                                        }}
-                                    >
-                                        {isProcessing ? "Processing..." : "Gift This"}
-                                    </GiftButton>
-                                )}
-                            </RegistryItemDetails>
-                        </RegistryItem>
-                    ))}
-                </RegistryGrid>
+                {isLoading ? (
+                    <>
+                        <LoadingMessage>Loading registry items...</LoadingMessage>
+                        <RegistryGrid>
+                            {[...Array(8)].map((_, i) => (
+                                <SkeletonItem key={i}>
+                                    <SkeletonImage />
+                                    <RegistryItemDetails>
+                                        <SkeletonText height={"24px"} width={"80%"} />
+                                        <SkeletonText height={"16px"} width={"100%"} />
+                                        <SkeletonText height={"16px"} width={"60%"} />
+                                        <SkeletonText height={"36px"} width={"100%"} marginTop={"auto"} />
+                                    </RegistryItemDetails>
+                                </SkeletonItem>
+                            ))}
+                        </RegistryGrid>
+                    </>
+                ) : (
+                    <>
+                        {customPriceItems.map(item => (
+                            <CustomPriceBanner key={item.id} onClick={(e) => handleGiftClick(e, item)}>
+                                <BannerImageContainer>
+                                    <RegistryImage src={item.image} alt={item.name} />
+                                </BannerImageContainer>
+                                <BannerDetails>
+                                    <RegistryItemTitle>{item.name}</RegistryItemTitle>
+                                    <RegistryItemStore>{item.description}</RegistryItemStore>
+                                    <RegistryItemPrice>{item.price}</RegistryItemPrice>
+                                    {item.price_id && (
+                                        <GiftButton 
+                                            disabled={processingItemId !== null}
+                                            onClick={(e) => handleGiftClick(e, item)}
+                                        >
+                                            {processingItemId === item.id ? "Processing..." : "Gift This"}
+                                        </GiftButton>
+                                    )}
+                                </BannerDetails>
+                            </CustomPriceBanner>
+                        ))}
+                        
+                        <RegistryGrid>
+                            {regularItems.map(item => (
+                                <RegistryItem key={item.id} onClick={(e) => handleGiftClick(e, item)}>
+                                    <RegistryImageContainer>
+                                        <RegistryImage src={item.image} alt={item.name} />
+                                    </RegistryImageContainer>
+                                    <RegistryItemDetails>
+                                        <RegistryItemTitle>{item.name}</RegistryItemTitle>
+                                        <RegistryItemStore>{item.description}</RegistryItemStore>
+                                        <RegistryItemPrice>{item.price}</RegistryItemPrice>
+                                        {item.price_id && (
+                                            <GiftButton 
+                                                disabled={processingItemId !== null}
+                                                onClick={(e) => handleGiftClick(e, item)}
+                                            >
+                                                {processingItemId === item.id ? "Processing..." : "Gift This"}
+                                            </GiftButton>
+                                        )}
+                                    </RegistryItemDetails>
+                                </RegistryItem>
+                            ))}
+                        </RegistryGrid>
+                    </>
+                )}
             </PageContainer>
         </>
     );

@@ -35,7 +35,7 @@ function FAQPage() {
       question: "How can I get to and from the venue? Is parking available?",
       answer: (
         <>
-          Please see our transportation guide <Link to="/transportation">linked here</Link>.
+          Please see our transportation guide <Link to="/hotels#transportation">linked here</Link>.
         </>
       )
     },
@@ -57,7 +57,11 @@ function FAQPage() {
     },
     {
       question: "Is there a registry?",
-      answer: "Your presence at our wedding and in our life is already the best gift we can imagine, and we know that many of you will have traveled a long distance to get to Chicago or are still students. However, if you do want to give a gift, we appreciate it and we are working on setting up a registry and/or honeymoon fund."
+      answer: (
+        <>
+          Your presence at our wedding and in our life is already the best gift we can imagine, and we know that many of you will have traveled a long distance to get to Chicago or are still students. However, if you do want to give a gift, we appreciate it and you can find our registry <Link to="/registry">linked here</Link>.
+        </>
+      )
     },
     {
       question: "Can I arrive early to the wedding?",
