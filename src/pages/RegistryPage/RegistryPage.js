@@ -14,44 +14,26 @@ import {
     RegistryItemDetails,
     RegistryItemTitle,
     RegistryItemStore,
-    RegistryItemPrice
+    RegistryItemPrice,
+    GiftButton
 } from './styled';
-import { fetchRegistryItems } from '../../services/api';
+import { fetchRegistryItems, createCheckoutSession } from '../../services/api';
 import bridgeImg from '../../images/bridge.jpg';
 import holdingHandsImg from '../../images/holding_hands.jpg';
 import trainImg from '../../images/train.jpg';
 import hotelImg from '../../images/hotel.jpg';
 
 function RegistryPage() {
+    const [isProcessing, setIsProcessing] = React.useState(false);
     const [registryItems, setRegistryItems] = React.useState([
         {
             id: 'placeholder-1',
-            title: "Cheese of Month Club",
-            store: "Experience Gift",
+            name: "Placeholder gift",
+            description: "Placeholder description",
             price: "$100.00",
+            price_id: null,
             image: bridgeImg
         },
-        {
-            id: 'placeholder-2',
-            title: "Wine Basket",
-            store: "West Elm",
-            price: "$50.00",
-            image: holdingHandsImg
-        },
-        {
-            id: 'placeholder-3',
-            title: "Round Trip Plane Tickets",
-            store: "Honeymoon Fund",
-            price: "$100.00",
-            image: trainImg
-        },
-        {
-            id: 'placeholder-4',
-            title: "KitchenAid Stand Mixer - Gold",
-            store: "Williams-Sonoma",
-            price: "$429.99",
-            image: hotelImg
-        }
     ]);
 
     React.useEffect(() => {
@@ -68,7 +50,8 @@ function RegistryPage() {
                             name: apiItem.name,
                             description: apiItem.description || "Registry Item",
                             image: apiItem.image || fallbackImage,
-                            price: apiItem.price
+                            price: apiItem.price,
+                            price_id: apiItem.price_id
                         };
                     });
 
@@ -98,7 +81,10 @@ function RegistryPage() {
 
                 <RegistryGrid>
                     {registryItems.map(item => (
-                        <RegistryItem key={item.id}>
+                        <RegistryItem key={item.id} onClick={(e) => {
+                            // If user clicks the wrapping item but the item handles it inside the button...
+                            // it's fine, we will just delegate it via the explicit button below to keep it organized
+                        }}>
                             <RegistryImageContainer>
                                 <RegistryImage src={item.image} alt={item.name} />
                             </RegistryImageContainer>
@@ -106,6 +92,26 @@ function RegistryPage() {
                                 <RegistryItemTitle>{item.name}</RegistryItemTitle>
                                 <RegistryItemStore>{item.description}</RegistryItemStore>
                                 <RegistryItemPrice>{item.price}</RegistryItemPrice>
+                                {item.price_id && (
+                                    <GiftButton
+                                        disabled={isProcessing}
+                                        onClick={async (e) => {
+                                            e.stopPropagation();
+                                            setIsProcessing(true);
+                                            const successUrl = `${window.location.origin}/registry?success=true`;
+                                            const cancelUrl = `${window.location.origin}/registry?canceled=true`;
+                                            const url = await createCheckoutSession(item.price_id, successUrl, cancelUrl);
+                                            if (url) {
+                                                window.location.href = url;
+                                            } else {
+                                                alert("Unable to initiate checkout. Please try again later.");
+                                                setIsProcessing(false);
+                                            }
+                                        }}
+                                    >
+                                        {isProcessing ? "Processing..." : "Gift This"}
+                                    </GiftButton>
+                                )}
                             </RegistryItemDetails>
                         </RegistryItem>
                     ))}

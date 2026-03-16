@@ -40,3 +40,20 @@ export const fetchRegistryItems = async () => {
     const data = await response.json();
     return { status: response.status, data };
 };
+
+export const createCheckoutSession = async (priceId, successUrl, cancelUrl) => {
+    const response = await fetch(`${API_BASE_URL}/wedding-registry-checkout`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            price_id: priceId,
+            success_url: successUrl,
+            cancel_url: cancelUrl
+        }),
+    });
+
+    const data = await response.json();
+    return data.url;
+};

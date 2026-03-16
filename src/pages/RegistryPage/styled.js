@@ -75,6 +75,13 @@ export const RegistryItem = styled.div`
     flex-direction: column;
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
 `
 
 export const RegistryImageContainer = styled.div`
@@ -114,4 +121,29 @@ export const RegistryItemPrice = styled.p`
     font-size: 1rem;
     font-weight: 600;
     margin: 10px 0 0 0;
+`
+
+export const GiftButton = styled.button`
+    margin-top: 15px;
+    background-color: transparent;
+    color: ${accentColor};
+    border: 1px solid ${accentColor};
+    padding: 10px;
+    font-size: 0.9rem;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+
+    &:hover {
+        background-color: ${accentColor};
+        color: white;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
 `
