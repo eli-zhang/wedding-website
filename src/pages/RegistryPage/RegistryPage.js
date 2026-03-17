@@ -125,6 +125,7 @@ function RegistryPage() {
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
+        window.scrollTo({ top: 500, behavior: 'smooth' });
     };
 
     const handleSortChange = (e) => {
@@ -142,7 +143,7 @@ function RegistryPage() {
                             <PageTitle>Registry</PageTitle>
                         </TitleContainer>
                         <PageSubtitle>
-                            Your presence at our wedding and in our life is already the best gift we can imagine, and we know that many of you will have traveled a long distance to get to Chicago or are still students. However, if you do want to give a gift, we really appreciate your generosity and have listed some options below. <br /><br />Thank you for viewing our newlywed fund!  A few registry items are listed as well. We’ll purchase any gifted items after we move for residency. Feel free to make partial contributions towards a group gift if desired.
+                            Thank you for viewing our newlywed fund! Your presence at our wedding and in our life is already the best gift we can imagine, and we know that many of you will have traveled a long distance to get to Chicago or are still students. However, if you do want to give a gift, we really appreciate your generosity and have listed some options below. We'll purchase any gifted items after we move for residency. Feel free to make partial contributions towards a group gift if you want!
                         </PageSubtitle>
                     </HeaderTextContainer>
                 </HeaderContainer>
