@@ -79,6 +79,15 @@ function RegistryPage() {
         return () => { mounted = false; };
     }, []);
 
+    const isInitialMount = React.useRef(true);
+    React.useEffect(() => {
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+            return;
+        }
+        window.scrollTo({ top: 500, behavior: 'smooth' });
+    }, [currentPage]);
+
     const handleGiftClick = async (e, item) => {
         e.stopPropagation();
         if (!item.price_id || processingItemId !== null || (item.price !== 'Custom price' && item.status === 'purchased')) return;
@@ -126,7 +135,6 @@ function RegistryPage() {
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
-        window.scrollTo({ top: 500, behavior: 'smooth' });
     };
 
     const handleSortChange = (e) => {
