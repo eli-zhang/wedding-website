@@ -62,7 +62,8 @@ function RegistryPage() {
                             image: apiItem.image || fallbackImage,
                             price: apiItem.price,
                             price_id: apiItem.price_id,
-                            silliness: apiItem.silliness
+                            silliness: apiItem.silliness,
+                            status: apiItem.status
                         };
                     });
 
@@ -80,7 +81,7 @@ function RegistryPage() {
 
     const handleGiftClick = async (e, item) => {
         e.stopPropagation();
-        if (!item.price_id || processingItemId !== null) return;
+        if (!item.price_id || processingItemId !== null || (item.price !== 'Custom price' && item.status === 'purchased')) return;
 
         setProcessingItemId(item.id);
         const successUrl = `${window.location.origin}/registry?success=true`;
@@ -165,12 +166,13 @@ function RegistryPage() {
                             ))}
                         </RegistryGrid>
                     </>
-                ) : isSuccess ? (
-                    <SuccessMessage>
-                        Thank you so much for contributing to our registry! We're really grateful for your generosity and support.
-                    </SuccessMessage>
                 ) : (
                     <>
+                        {isSuccess && (
+                            <SuccessMessage>
+                                Thank you so much for contributing to our registry! We're really grateful for your generosity and support.
+                            </SuccessMessage>
+                        )}
                         {customPriceItems.map(item => (
                             <CustomPriceBanner key={item.id} onClick={(e) => handleGiftClick(e, item)}>
                                 <BannerImageContainer>
@@ -242,10 +244,10 @@ function RegistryPage() {
                                         <RegistryItemPrice>{item.price}</RegistryItemPrice>
                                         {item.price_id && (
                                             <GiftButton
-                                                disabled={processingItemId !== null}
-                                                onClick={(e) => handleGiftClick(e, item)}
+                                                disabled={processingItemId !== null || item.status === 'purchased'}
+                                                onClick={(e) => { handleGiftClick(e, item) }}
                                             >
-                                                {processingItemId === item.id ? "Processing..." : "Gift This"}
+                                                {item.status === 'purchased' ? "Purchased" : processingItemId === item.id ? "Processing..." : "Gift This"}
                                             </GiftButton>
                                         )}
                                     </RegistryItemDetails>
