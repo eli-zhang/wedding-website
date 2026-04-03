@@ -282,6 +282,71 @@ export const ControlsContainer = styled.div`
     }
 `;
 
+export const FilterToggleContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-right: auto;
+
+    @media (max-width: ${mobileBreakpoint}) {
+        margin-right: 0;
+        margin-top: 10px;
+    }
+`;
+
+export const ToggleLabel = styled.span`
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: ${textColorDark};
+    cursor: pointer;
+`;
+
+export const Switch = styled.label`
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+`;
+
+export const ToggleInput = styled.input`
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + span {
+        background-color: ${accentColor};
+    }
+
+    &:checked + span:before {
+        transform: translateX(22px);
+    }
+`;
+
+export const Slider = styled.span`
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+
+    &:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+`;
+
 export const SortContainer = styled.div`
     display: flex;
     align-items: center;

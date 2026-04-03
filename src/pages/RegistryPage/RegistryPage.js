@@ -29,6 +29,11 @@ import {
     SortContainer,
     SortLabel,
     SortSelect,
+    FilterToggleContainer,
+    ToggleLabel,
+    Switch,
+    ToggleInput,
+    Slider,
     PaginationContainer,
     PageButton
 } from './styled';
@@ -44,6 +49,7 @@ function RegistryPage() {
     const [registryItems, setRegistryItems] = React.useState([]);
     const [currentPage, setCurrentPage] = React.useState(1);
     const [sortOption, setSortOption] = React.useState('name');
+    const [showPurchased, setShowPurchased] = React.useState(false);
     const itemsPerPage = 8; // Match the skeleton count for consistency
 
     React.useEffect(() => {
@@ -66,7 +72,6 @@ function RegistryPage() {
                             status: apiItem.status
                         };
                     });
-
                     setRegistryItems(resolvedItems);
                 }
             }
@@ -110,8 +115,10 @@ function RegistryPage() {
     };
 
     // Process registry items: filter out custom price items for grid, then sort
-    const allRegularItems = registryItems.filter(item => item.price !== 'Custom price');
     const customPriceItems = registryItems.filter(item => item.price === 'Custom price');
+    const allRegularItems = registryItems.filter(item =>
+        item.price !== 'Custom price' && (showPurchased || item.status !== 'purchased')
+    );
 
     const sortedItems = [...allRegularItems].sort((a, b) => {
         switch (sortOption) {
@@ -212,6 +219,23 @@ function RegistryPage() {
                                     <option value="silliness">Silliness</option>
                                 </SortSelect>
                             </SortContainer>
+
+                            <FilterToggleContainer>
+                                <ToggleLabel onClick={() => setShowPurchased(!showPurchased)}>
+                                    Show Purchased
+                                </ToggleLabel>
+                                <Switch>
+                                    <ToggleInput
+                                        type="checkbox"
+                                        checked={showPurchased}
+                                        onChange={() => {
+                                            setShowPurchased(!showPurchased);
+                                            setCurrentPage(1); // Reset to first page
+                                        }}
+                                    />
+                                    <Slider />
+                                </Switch>
+                            </FilterToggleContainer>
 
                             {totalPages > 1 && (
                                 <PaginationContainer>
