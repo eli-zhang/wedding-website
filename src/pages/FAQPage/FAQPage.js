@@ -35,7 +35,25 @@ function FAQPage() {
       question: "How can I get to and from the venue? Is parking available?",
       answer: (
         <>
-          Please see our transportation guide <Link to="/hotels#transportation">linked here</Link>.
+          Although Garfield Park Conservatory is accessible by the Green Line (part of Chicago's public transportation system), we do <b>not</b> recommend taking the Green Line late at night or when leaving the wedding. Instead, please plan to carpool or call an Uber/Lyft. If you need any help with transportation, we'll be happy to assist you!
+          <br /><br />
+          There is free parking available on-site. There will be a security guard present at the parking lot.
+        </>
+      )
+    },
+    {
+      question: "Where should I stay?",
+      answer: (
+        <>
+          We have reserved a block of rooms at the <b>Hampton Inn Chicago Downtown/Magnificent Mile</b> (160 E. Huron St.).
+
+          If you are looking for other options, we recommend the following neighborhoods:
+          <ul>
+            <li><b>West Loop/Fulton Market:</b> Where we live! Great restaurants and bars, close to the venue.</li>
+            <li><b>The Loop:</b> Close to major attractions like Millennium Park and the Art Institute.</li>
+            <li><b>River North/Streeterville:</b> Near the Magnificent Mile with lots of shopping and dining.</li>
+          </ul>
+          If looking at Airbnbs, friends and family have enjoyed <b>Bridgeport</b>, <b>Pilsen</b>, <b>Lincoln Park</b>, <b>West Town</b>, or <b>Wicker Park</b>. Please do research into the safety of each area and reach out if you have questions—we’d love to help!
         </>
       )
     },
@@ -45,7 +63,7 @@ function FAQPage() {
     },
     {
       question: "Will there be a rehearsal dinner?",
-      answer: "We might have an informal rehearsal dinner the night before the wedding. Check back for more details!"
+      answer: "If you are in the wedding party, we have reached out with details about rehearsal & dinner."
     },
     {
       question: "Are young children invited?",
@@ -73,7 +91,11 @@ function FAQPage() {
     },
     {
       question: "What is the schedule for the wedding day?",
-      answer: "Aside from starting between 5 pm and 5:30 pm, the schedule is TBD! Please check back for more details."
+      answer: (
+        <>
+          Please see our schedule <Link to="/schedule">linked here</Link>!
+        </>
+      )
     }
   ];
 

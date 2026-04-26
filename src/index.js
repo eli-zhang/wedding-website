@@ -11,7 +11,7 @@ import HomePage from './pages/HomePage/HomePage';
 import RSVPPage from './pages/RSVPPage/RSVPPage';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import ThingsToDoPage from './pages/ThingsToDoPage/ThingsToDoPage';
-import HotelsPage from './pages/HotelsPage/HotelsPage';
+import SchedulePage from './pages/SchedulePage/SchedulePage';
 import FAQPage from './pages/FAQPage/FAQPage';
 import InvitationPage from './pages/InvitationPage/InvitationPage';
 import RegistryPage from './pages/RegistryPage/RegistryPage';
@@ -36,8 +36,8 @@ root.render(
       <Route path="/things-to-do" >
         <Route index={true} element={<ThingsToDoPage />} />
       </Route>
-      <Route path="/hotels" >
-        <Route index={true} element={<HotelsPage />} />
+      <Route path="/schedule" >
+        <Route index={true} element={<SchedulePage />} />
       </Route>
       <Route path="/faq" >
         <Route index={true} element={<FAQPage />} />
